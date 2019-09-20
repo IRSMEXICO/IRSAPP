@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => '127.0.0.1',
+	'username' => 'adminirs',
+	'password' => 'IRSDEMEXICO#2019',
 	'database' => 'irsbd',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
