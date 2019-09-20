@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'https://irsdesarrollo.azurewebsites.net',
+	'hostname' => '127.0.0.1',
 	'username' => 'adminirs',
 	'password' => 'IRSDEMEXICO#2019',
 	'database' => 'irsbd',
