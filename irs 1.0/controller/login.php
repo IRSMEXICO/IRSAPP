@@ -25,15 +25,15 @@ if(sizeof($iniciar)>0){
     $_SESSION['expire'] = $_SESSION['start'] + (600);//tiempo de 600segundos por sesion
     if($rol == "usuario"){
         $_SESSION['rol'] = $rol;
-        header("location: ../inicio");
+        header("location: inicio");
     }
     else if($rol = "administrador"){
         $_SESSION['rol'] = $rol;
-        header("location: ../inicio");
+        header("location: inicio");
     }
     else if($rol = "gerente"){
         $_SESSION['rol'] = $rol;
-        header("location: ../inicio");
+        header("location: inicio");
     }
 }
 else{
