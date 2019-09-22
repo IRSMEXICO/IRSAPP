@@ -74,14 +74,14 @@
           Catalogos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="cat_contratos.php">Contratos</a>
-          <a class="dropdown-item" href="cat_actividades.php">Actividades</a>
-          <a class="dropdown-item" href="cat_rate.php">Rates</a>
-          <a class="dropdown-item" href="cat_turno.php">Turnos</a>
-          <a class="dropdown-item" href="cat_moneda.php">Monedas</a>
-          <a class="dropdown-item" href="cat_captura">Tipo Captura</a>
-          <a class="dropdown-item" href="cat_reg">Tipo de Registro</a>
-          <a class="dropdown-item" href="cat_motivo_tm">Motivos TM</a>
+          <a class="dropdown-item" href="cat_act/cat_contratos.php">Contratos</a>
+          <a class="dropdown-item" href="cat_act/cat_actividades.php">Actividades</a>
+          <a class="dropdown-item" href="cat_act/cat_rate.php">Rates</a>
+          <a class="dropdown-item" href="cat_act/cat_turno.php">Turnos</a>
+          <a class="dropdown-item" href="cat_act/cat_moneda.php">Monedas</a>
+          <a class="dropdown-item" href="cat_act/cat_captura.php">Tipo Captura</a>
+          <a class="dropdown-item" href="cat_act/cat_reg.php">Tipo de Registro</a>
+          <a class="dropdown-item" href="cat_act/cat_motivo_tm.php">Motivos TM</a>
         </div>
       </li>
       <!--**CATALOGOS**-->
