@@ -4,7 +4,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']== true){
 //si la sesion es correcta la pagina sige sin problema
 }
 else{
-    haeder("Location index");//si no inicia sesion se re-dirige al index
+    header("Location index");//si no inicia sesion se re-dirige al index
 }
 $now = time();//variable por tiempo
 
