@@ -41,7 +41,7 @@ $registro = $info_registro->cat_registro();
 					<th>ID</th>
                     <th>Tipo de Registro</th>
                     <th>Acciones </th>
-					<th><a href="tregistro" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
+					<th><a href="tregistro.php" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
 					
 				</tr>
 				<?php foreach ($registro as $reg) { ?>
@@ -49,8 +49,8 @@ $registro = $info_registro->cat_registro();
 							<td><?php echo $reg['id_registro']; ?></td>
 							<td><?php echo $reg['tipo_registro']; ?></td>
 							<td>
-								<a href="mod_registro?id=<?php echo $reg['id_registro'];?>&reg=<?php echo $reg['tipo_registro'];?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-								<a href="../../controller/del_registro?id=<?php echo $reg['id_registro'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar el contrato <?php echo $reg['tipo_registro'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+								<a href="mod_registro.php?id=<?php echo $reg['id_registro'];?>&reg=<?php echo $reg['tipo_registro'];?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+								<a href="../../controller/del_registro.php?id=<?php echo $reg['id_registro'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar el contrato <?php echo $reg['tipo_registro'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 							</td>
 							 <td>
 							 </tr>

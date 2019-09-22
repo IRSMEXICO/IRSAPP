@@ -33,7 +33,7 @@ $tipo_reg =  $url = $_GET['act'];
 			<hr />
 			
 		
-			<form class="form-horizontal" action="../../controller/add_actividad" method="post">
+			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">ID</label>
 					<div class="col-sm-2">
@@ -51,8 +51,8 @@ $tipo_reg =  $url = $_GET['act'];
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
 						<input type="submit" name="save_registro" class="btn btn-sm btn-primary" value="Guardar datos">
-						<a href="cat_reg" class="btn btn-sm btn-danger">Cancelar</a>
-						<a href="cat_reg" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
+						<a href="cat_reg.php" class="btn btn-sm btn-danger">Cancelar</a>
+						<a href="cat_reg.php" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
 					</div>
 				</div>
 			</form>

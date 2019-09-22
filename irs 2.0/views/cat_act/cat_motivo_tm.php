@@ -41,7 +41,7 @@ $motivos = $info_motivo->cat_mot();
 					<th>ID</th>
 					<th>Motivo_tm </th>
                     <th>Acciones </th>
-					<th><a href="motivos_tm" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
+					<th><a href="motivos_tm.php" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
 					
 				</tr>
 				<?php foreach ($motivos as $mot) { ?>
@@ -49,8 +49,8 @@ $motivos = $info_motivo->cat_mot();
 							<td><?php echo $mot['id_motivo_tm']; ?></td>
 							<td><?php echo $mot['tipo_motivo_tm']; ?></td>
 							<td>
-								<a href="mod_motivo_tm?id=<?php echo $mot['id_motivo_tm'];?>&mot=<?php echo $mot['tipo_motivo_tm']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-								<a href="../../controller/del_motivo_tm?id=<?php echo $mot['id_motivo_tm'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la actividad <?php echo $mot['tipo_motivo_tm'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+								<a href="mod_motivo_tm.php?id=<?php echo $mot['id_motivo_tm'];?>&mot=<?php echo $mot['tipo_motivo_tm']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+								<a href="../../controller/del_motivo_tm.php?id=<?php echo $mot['id_motivo_tm'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la actividad <?php echo $mot['tipo_motivo_tm'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 							</td>
 							 <td>
 							 </tr>

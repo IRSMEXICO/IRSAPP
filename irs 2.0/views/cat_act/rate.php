@@ -31,7 +31,7 @@ include("conexion.php");
 			<hr />
 
 
-			<form class="form-horizontal" action="../../controller/add_actividad" method="post">
+			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Tipo de Rate</label>
 					<div class="col-sm-2">

@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--SLIDER-->
         <link rel="stylesheet" href="../content/css/nivo-slider.css">
-	      <link rel="stylesheet" href="<../content/css/mi-slider.css">
+	      <link rel="stylesheet" href="../content/css/mi-slider.css">
 	      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
   	    <script src="../content/js/jquery.nivo.slider.js"></script>
 	      <script type="text/javascript"> 
@@ -74,14 +74,14 @@
           Catalogos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Contratos</a>
-          <a class="dropdown-item" href="#">Actividades</a>
-          <a class="dropdown-item" href="#">Rates</a>
-          <a class="dropdown-item" href="#">Turnos</a>
-          <a class="dropdown-item" href="#">Monedas</a>
-          <a class="dropdown-item" href="#">Tipo Captura</a>
-          <a class="dropdown-item" href="#">Tipo de Registro</a>
-          <a class="dropdown-item" href="#">Motivos TM</a>
+          <a class="dropdown-item" href="cat_contratos.php">Contratos</a>
+          <a class="dropdown-item" href="cat_actividades.php">Actividades</a>
+          <a class="dropdown-item" href="cat_rate.php">Rates</a>
+          <a class="dropdown-item" href="cat_turno.php">Turnos</a>
+          <a class="dropdown-item" href="cat_moneda.php">Monedas</a>
+          <a class="dropdown-item" href="cat_captura">Tipo Captura</a>
+          <a class="dropdown-item" href="cat_reg">Tipo de Registro</a>
+          <a class="dropdown-item" href="cat_motivo_tm">Motivos TM</a>
         </div>
       </li>
       <!--**CATALOGOS**-->

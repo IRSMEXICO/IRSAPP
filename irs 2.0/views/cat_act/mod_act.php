@@ -31,7 +31,7 @@ $tipo_act =  $url = $_GET['act'];
 		<div class="content">
 			<h2>Datos del Catalogo de Actividades &raquo; Editar datos</h2>
 			<hr />
-			<form class="form-horizontal" action="../../controller/add_actividad" method="post">
+			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">ID</label>
 					<div class="col-sm-2">
@@ -49,8 +49,8 @@ $tipo_act =  $url = $_GET['act'];
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
 						<input type="submit" name="save_act" class="btn btn-sm btn-primary" value="Guardar datos">
-						<a href="index_actividad" class="btn btn-sm btn-danger">Cancelar</a>
-						<a href="index_actividad" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
+						<a href="index_actividad.php" class="btn btn-sm btn-danger">Cancelar</a>
+						<a href="index_actividad.php" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
 					
 					</div>
 				</div>

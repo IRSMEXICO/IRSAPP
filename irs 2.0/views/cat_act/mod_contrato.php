@@ -31,7 +31,7 @@ $tipo_con =  $url = $_GET['con'];
 		<div class="content">
 			<h2>Datos del Catalogo de Contratos &raquo; Editar datos</h2>
 			<hr />
-			<form class="form-horizontal" action="../../controller/add_actividad" method="post">
+			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">ID</label>
 					<div class="col-sm-2">
@@ -49,8 +49,8 @@ $tipo_con =  $url = $_GET['con'];
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
 						<input type="submit" name="save_contrato" class="btn btn-sm btn-primary" value="Guardar datos">
-						<a href="index_contratos.php" class="btn btn-sm btn-danger">Cancelar</a>
-						<!----><a href="index_contratos.php" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
+						<a href="index_contratos.php" class="btn btn-sm btn-danger">Cancelar</a> <!--index_contratos.php-->
+						<a href="index_contratos.php" class="btn btn-sm btn-warning">Regresar al Catalogo</a> <!--index_contratos.php-->
 					</div>
 				</div>
 			</form>

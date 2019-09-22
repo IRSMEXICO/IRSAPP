@@ -29,7 +29,7 @@ include("conexion.php");
 		<div class="content">
 			<h2>Datos del Catalogo de Motivos TM &raquo; Agregar datos</h2>
 			<hr />
-			<form class="form-horizontal" action="../../controller/add_actividad" method="post">
+			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Tipo de Motivos TM</label>
 					<div class="col-sm-2">
@@ -42,8 +42,8 @@ include("conexion.php");
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
 						<input type="submit" name="add_motivo_tm" class="btn btn-sm btn-primary" value="Guardar datos">
-						<a href="cat_motivo_tm" class="btn btn-sm btn-danger">Cancelar</a>
-						<a href="cat_motivo_tm" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
+						<a href="cat_motivo_tm.php" class="btn btn-sm btn-danger">Cancelar</a>
+						<a href="cat_motivo_tm.php" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
 					</div>
 				</div>
 			</form>

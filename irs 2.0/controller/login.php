@@ -39,7 +39,7 @@ if(sizeof($iniciar)>0){
 else{
     echo'<script type="text/javascript">
     alert("Usuario y/o contraseña incorrectos");
-    window.location.href="../";
+    window.location.href="../index.php";
     </script>';
 }
 ?>
