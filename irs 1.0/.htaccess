@@ -3,12 +3,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php
 #php_flag display_errors On
-RewriteRule ^inicio$ views/inicio [L]
-RewriteRule ^actividades$ views/cat_act/actividades [L]
-RewriteRule ^captura$ views/cat_act/captura [L]
-RewriteRule ^contratos$ views/cat_act/contratos [L]
-RewriteRule ^moneda$ views/cat_act/moneda [L]
-RewriteRule ^motivos_tm$ views/cat_act/motivos_tm [L]
-RewriteRule ^rate$ views/cat_act/rate [L]
-RewriteRule ^tregistro$ views/cat_act/tregistro [L]
-RewriteRule ^turno$ views/cat_act/turno [L]
+RewriteRule ^inicio$ views/inicio.php [L]
+RewriteRule ^actividades$ views/cat_act/actividades.php [L]
+RewriteRule ^captura$ views/cat_act/captura.php [L]
+RewriteRule ^contratos$ views/cat_act/contratos.php [L]
+RewriteRule ^moneda$ views/cat_act/moneda.php [L]
+RewriteRule ^motivos_tm$ views/cat_act/motivos_tm.php [L]
+RewriteRule ^rate$ views/cat_act/rate.php [L]
+RewriteRule ^tregistro$ views/cat_act/tregistro.php [L]
+RewriteRule ^turno$ views/cat_act/turno.php [L]
