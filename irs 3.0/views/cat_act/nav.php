@@ -19,21 +19,21 @@
 </a>
 				
         <ul class="dropdown-menu" aria-labelledby="dropdownmenu1">
-		<li role= "presentation"><a role="item"href="index_actividad.php">Actividades</a></li>
+		<li role= "presentation"><a role="item"href="cat_actividades.php">Actividades</a></li>
 					<li class="divider"></li>
-					<li role="presentation"><a role="item" href="index_contratos.php">Contratos</a></li>
+					<li role="presentation"><a role="item" href="cat_contratos.php">Contratos</a></li>
 					<li class="divider"></li>
-					<li role="presentation"><a role="item" href="index_moneda.php">Monedas</a></li>
+					<li role="presentation"><a role="item" href="cat_moneda.php">Monedas</a></li>
 					<li class="divider"></li>  
-					<li role="presentation"><a role="item" href="index_motivos_tm.php">Motivos TM</a></li>
+					<li role="presentation"><a role="item" href="cat_motivos_tm.php">Motivos TM</a></li>
 					<li class="divider"></li>
-					<li role="presentation"><a role="item" href="index_tipo_rate.php">Rates</a></li>
+					<li role="presentation"><a role="item" href="cat_rate.php">Rates</a></li>
 					<li class="divider"></li>
-					<li role="presentation"><a role="item" href="index_captura.php">Tipo Captura</a></li>
+					<li role="presentation"><a role="item" href="cat_captura.php">Tipo Captura</a></li>
 					<li class="divider"></li>
-					<li role="presentation"><a role="item" href="index_tipo_registro.php">Tipo de Registro</a></li>
+					<li role="presentation"><a role="item" href="cat_reg.php">Tipo de Registro</a></li>
 					<li class="divider"></li>
-					<li role="presentation"><a role="item" href="index_turno.php">Turnos</a></li>
+					<li role="presentation"><a role="item" href="cat_turno.php">Turnos</a></li>
 					<li class="divider"></li>
 				</ul>
 				

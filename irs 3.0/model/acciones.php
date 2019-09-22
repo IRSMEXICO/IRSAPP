@@ -1,11 +1,5 @@
 <?php
-class conexion{
-    public function con(){
-        $link= mysqli_connect("irsweb22019.mysql.database.azure.com", "adminirs@irsweb22019","IRSDEMEXICO#2019", "irs");
-        $link->set_charset("utf8");
-        return $link;
-    }
-}
+include 'conexion.php';
 class consul{
     private $db;//database
     private $lista;
@@ -142,7 +136,7 @@ public function cat_mod_actividades($tipo_actividad,$id){
     $cat_actividades=$this->db->query("UPDATE cat_actividades set tipo_actividad='$tipo_actividad' WHERE id_codigo='$id'");
     echo'<script type="text/javascript">
     alert("modificación exitosa");
-    window.history.go(-1);
+    window.history.go(-2);
     </script>';
 
 }

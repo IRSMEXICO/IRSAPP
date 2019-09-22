@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Menú Principal | IRS</title>
+    <title>GERENTE</title>
+        <!--<title>Menú Principal | IRS</title>-->
         <!--BOOTSTRAP-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -14,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--SLIDER-->
         <link rel="stylesheet" href="../content/css/nivo-slider.css">
-	      <link rel="stylesheet" href="../content/css/mi-slider.css">
+	      <link rel="stylesheet" href="<../content/css/mi-slider.css">
 	      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
   	    <script src="../content/js/jquery.nivo.slider.js"></script>
 	      <script type="text/javascript"> 
@@ -74,14 +75,14 @@
           Catalogos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="cat_act/cat_contratos.php">Contratos</a>
-          <a class="dropdown-item" href="cat_act/cat_actividades.php">Actividades</a>
-          <a class="dropdown-item" href="cat_act/cat_rate.php">Rates</a>
-          <a class="dropdown-item" href="cat_act/cat_turno.php">Turnos</a>
-          <a class="dropdown-item" href="cat_act/cat_moneda.php">Monedas</a>
-          <a class="dropdown-item" href="cat_act/cat_captura.php">Tipo Captura</a>
-          <a class="dropdown-item" href="cat_act/cat_reg.php">Tipo de Registro</a>
-          <a class="dropdown-item" href="cat_act/cat_motivo_tm.php">Motivos TM</a>
+          <a class="dropdown-item" href="#">Contratos</a>
+          <a class="dropdown-item" href="cat_actividades">Actividades</a>
+          <a class="dropdown-item" href="#">Rates</a>
+          <a class="dropdown-item" href="#">Turnos</a>
+          <a class="dropdown-item" href="#">Monedas</a>
+          <a class="dropdown-item" href="#">Tipo Captura</a>
+          <a class="dropdown-item" href="#">Tipo de Registro</a>
+          <a class="dropdown-item" href="#">Motivos TM</a>
         </div>
       </li>
       <!--**CATALOGOS**-->

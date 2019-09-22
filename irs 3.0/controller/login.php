@@ -25,11 +25,11 @@ if(sizeof($iniciar)>0){
     $_SESSION['expire'] = $_SESSION['start'] + (600);//tiempo de 600segundos por sesion
     if($rol == "usuario"){
         $_SESSION['rol'] = $rol;
-        header("location: ../views/inicio.php");
+        header("location: ../views/usuario.php");
     }
     else if($rol = "administrador"){
         $_SESSION['rol'] = $rol;
-        header("location: ../views/inicio.php");
+        header("location: ../views/admin.php");
     }
     else if($rol = "gerente"){
         $_SESSION['rol'] = $rol;
@@ -39,7 +39,7 @@ if(sizeof($iniciar)>0){
 else{
     echo'<script type="text/javascript">
     alert("Usuario y/o contraseña incorrectos");
-    window.location.href="../index.php";
+    window.location.href="../";
     </script>';
 }
 ?>

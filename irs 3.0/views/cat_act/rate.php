@@ -1,6 +1,3 @@
-<?php
-include("conexion.php");
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,13 +24,15 @@ include("conexion.php");
 	</nav>
 	<div class="container">
 		<div class="content">
-			<h2>Datos del Catalogo de Monedas &raquo; Agregar datos</h2>
+			<h2>Datos del Catalogo de Rate &raquo; Agregar datos</h2>
 			<hr />
+
+
 			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">Tipo de Moneda</label>
+					<label class="col-sm-3 control-label">Tipo de Rate</label>
 					<div class="col-sm-2">
-						<input type="text" name="tipo_moneda" class="form-control" placeholder="Tipo de Moneda" required>
+						<input type="text" name="tipo_rate" class="form-control" placeholder="Tipo de Rate" required>
 					</div>
 				</div>
 				
@@ -41,9 +40,9 @@ include("conexion.php");
 				<div class="form-group">
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
-						<input type="submit" name="add_moneda" class="btn btn-sm btn-primary" value="Guardar datos">
-						<a href="cat_moneda.php" class="btn btn-sm btn-danger">Cancelar</a>
-						<a href="cat_moneda.php" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
+						<input type="submit" name="add_rate" class="btn btn-sm btn-primary" value="Guardar datos">
+						<a href="cat_rate.php" class="btn btn-sm btn-danger">Cancelar</a>
+						<a href="cat_rate.php" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
 					</div>
 				</div>
 			</form>

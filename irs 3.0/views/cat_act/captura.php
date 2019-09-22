@@ -1,8 +1,3 @@
-<?php
-include("../../model/sesiones.php");
-$id = $_GET['id'];
-$tipo_con =  $url = $_GET['con'];
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,7 +5,7 @@ $tipo_con =  $url = $_GET['con'];
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Datos de Catalogo de Contratos</title>
+	<title>Latihan MySQLi</title>
 
 	<!-- Bootstrap -->
 	<link href="../../content/css/bootstrap.min.css" rel="stylesheet">
@@ -20,8 +15,8 @@ $tipo_con =  $url = $_GET['con'];
 			margin-top: 80px;
 		}
 	</style>
-	
 
+	
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -29,28 +24,24 @@ $tipo_con =  $url = $_GET['con'];
 	</nav>
 	<div class="container">
 		<div class="content">
-			<h2>Datos del Catalogo de Contratos &raquo; Editar datos</h2>
+			<h2>Datos del Catalogo de Captura &raquo; Agregar datos</h2>
 			<hr />
+
 			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">ID</label>
+					<label class="col-sm-3 control-label">Tipo de Captura</label>
 					<div class="col-sm-2">
-						<input type="text" name="id" value="<?php echo $id ?>" class="form-control" readonly onmousedown="return false;" placeholder="NIK" required>
+						<input type="text" name="tipo_captura" class="form-control" placeholder="Tipo de Captura" required>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">Tipo de Contrato</label>
-					<div class="col-sm-3">
-						
-						<input type="text" name="tipo_contrato" value="<?php echo $tipo_con ?>" class="form-control" placeholder="Tipo de Contrato" required>
-					</div> 
-				</div>
+				
+				
 				<div class="form-group">
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
-						<input type="submit" name="save_contrato" class="btn btn-sm btn-primary" value="Guardar datos">
-						<a href="index_contratos.php" class="btn btn-sm btn-danger">Cancelar</a> <!--index_contratos.php-->
-						<a href="index_contratos.php" class="btn btn-sm btn-warning">Regresar al Catalogo</a> <!--index_contratos.php-->
+						<input type="submit" name="add_captura" class="btn btn-sm btn-primary" value="Guardar datos">
+						<a href="cat_captura" class="btn btn-sm btn-danger">Cancelar</a>
+						<a href="cat_captura" class="btn btn-sm btn-warning">Regresar al Catalogo</a>
 					</div>
 				</div>
 			</form>
