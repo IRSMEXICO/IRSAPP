@@ -43,7 +43,7 @@ $moneda = $info_moneda->cat_moneda();
 					<th>ID</th>
                     <th>Tipo de Moneda</th>
                     <th>Acciones </th>	
-					<th><a href="moneda.php" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
+					<th><a href="moneda.php" button type="button"  title="Agregar datos"class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar Datos </button></th>
 					
 				</tr>
 				<?php foreach ($moneda as $mon) { ?>
@@ -51,8 +51,8 @@ $moneda = $info_moneda->cat_moneda();
 							<td><?php echo $mon['id_moneda']; ?></td>
 							<td><?php echo $mon['tipo_moneda']; ?></td>
 							<td>
-								<a href="mod_moneda.php?id=<?php echo $mon['id_moneda'];?>&mod=<?php echo $mon['tipo_moneda']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-								<a href="../../controller/del_moneda.php?id=<?php echo $mon['id_moneda'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar el contrato <?php echo $mon['tipo_moneda'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+								<a href="mod_moneda.php?id=<?php echo $mon['id_moneda'];?>&mod=<?php echo $mon['tipo_moneda']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Datos</a>
+								<a href="../../controller/del_moneda.php?id=<?php echo $mon['id_moneda'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar el contrato <?php echo $mon['tipo_moneda'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</a>
 							</td>
 							 <td>
 							 </tr>

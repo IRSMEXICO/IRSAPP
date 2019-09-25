@@ -42,7 +42,7 @@ $actividades = $info_actividades->cat_actividades();
 					<th>ID</th>
 					<th>Actividad </th>
                     <th>Acciones </th>
-					<th><a href="actividades.php" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
+					<th><a href="actividades.php" button type="button"  title="Agregar datos"class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar Datos </button></th>
 					
 				</tr>
 				<?php foreach ($actividades as $actividad) { ?>
@@ -50,8 +50,8 @@ $actividades = $info_actividades->cat_actividades();
 							<td><?php echo $actividad['id_codigo']; ?></td>
 							<td><?php echo $actividad['tipo_actividad']; ?></td>
 							<td>
-								<a href="mod_act.php?id=<?php echo $actividad['id_codigo'];?>&act=<?php echo $actividad['tipo_actividad']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-								<a href="../../controller/del_actividad.php?id=<?php echo $actividad['id_codigo'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la actividad <?php echo $actividad['id_codigo'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+								<a href="mod_act.php?id=<?php echo $actividad['id_codigo'];?>&act=<?php echo $actividad['tipo_actividad']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Datos</a>
+								<a href="../../controller/del_actividad.php?id=<?php echo $actividad['id_codigo'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la actividad <?php echo $actividad['id_codigo'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Datos</a>
 							</td>
 							 <td>
 							 </tr>

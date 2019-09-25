@@ -44,7 +44,7 @@ $turno = $info_turno->cat_turno();
 					<th>ID</th>
                     <th>Tipo de Turno</th>
                     <th>Acciones </th>
-					<th><a href="turno.php" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
+					<th><a href="turno.php" button type="button"  title="Agregar datos"class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar Datos </button></th>
 					
 				</tr>
 				<?php foreach ($turno as $tur) { ?>
@@ -52,8 +52,8 @@ $turno = $info_turno->cat_turno();
 							<td><?php echo $tur['id_turno']; ?></td>
 							<td><?php echo $tur['tipo_turno']; ?></td>
 							<td>
-								<a href="mod_contrato.php?id=<?php echo $tur['id_turno'];?>&tur=<?php echo $tur['tipo_turno'];?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-								<a href="../../controller/del_turno.php?id=<?php echo $tur['id_turno'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar el contrato <?php echo $tur['tipo_turno'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+								<a href="mod_turno.php?id=<?php echo $tur['id_turno'];?>&tur=<?php echo $tur['tipo_turno'];?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Datos</a>
+								<a href="../../controller/del_turno.php?id=<?php echo $tur['id_turno'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar el contrato <?php echo $tur['tipo_turno'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</a>
 							</td>
 							 <td>
 							 </tr>

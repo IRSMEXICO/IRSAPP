@@ -41,7 +41,7 @@ $rate = $info_rate->cat_rate();
 					<th>ID</th>
 					<th>Rate </th>
                     <th>Acciones </th>
-					<th><a href="rate.php" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
+					<th><a href="rate.php" button type="button"  title="Agregar datos"class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar Datos </button></th>
 					
 				</tr>
 				<?php foreach ($rate as $rat) { ?>
@@ -49,8 +49,8 @@ $rate = $info_rate->cat_rate();
 							<td><?php echo $rat['id_rate']; ?></td>
 							<td><?php echo $rat['tipo_rate']; ?></td>
 							<td>
-								<a href="mod_rate.php?id=<?php echo $rat['id_rate'];?>&mot=<?php echo $rat['tipo_rate']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-								<a href="../../controller/del_rate.php?id=<?php echo $rat['id_rate'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la actividad <?php echo $mot['tipo_rate'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+								<a href="mod_rate.php?id=<?php echo $rat['id_rate'];?>&mot=<?php echo $rat['tipo_rate']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Datos</a>
+								<a href="../../controller/del_rate.php?id=<?php echo $rat['id_rate'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la actividad <?php echo $mot['tipo_rate'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</a>
 							</td>
 							 <td>
 							 </tr>

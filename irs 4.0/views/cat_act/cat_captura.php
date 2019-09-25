@@ -43,7 +43,7 @@ $captura = $info_captura->cat_captura();
 					<th>ID</th>
                     <th>Tipo de Captura</th>
                     <th>Acciones </th>
-					<th><a href="captura.php" button type="button"  title="Agregar datos"class="btn btn-success">Agregar Datos </button></th>
+					<th><a href="captura.php" button type="button"  title="Agregar datos"class="btn btn-success"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar Datos </button></th>
 					
 				</tr>
 				<?php foreach ($captura as $cap) { ?>
@@ -51,8 +51,8 @@ $captura = $info_captura->cat_captura();
 							<td><?php echo $cap['id_captura']; ?></td>
 							<td><?php echo $cap['tipo_captura']; ?></td>
 							<td>
-								<a href="mod_captura.php?id=<?php echo $cap['id_captura'];?>&cap=<?php echo $cap['tipo_captura']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-								<a href="../../controller/del_captura.php?id=<?php echo $cap['id_captura'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la captura <?php echo $actividad['tipo_captura'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+								<a href="mod_captura.php?id=<?php echo $cap['id_captura'];?>&cap=<?php echo $cap['tipo_captura']; ?>" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Datos</a>
+								<a href="../../controller/del_captura.php?id=<?php echo $cap['id_captura'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la captura <?php echo $actividad['tipo_captura'];?>?');" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</a>
 							</td>
 							 <td>
 							 </tr>
