@@ -23,7 +23,8 @@
       <span class="state">Ingresar</span>
     </button>
   </form>
-  <footer><a target="blank" href="#">INSEPCCION RETRABAJO SORTEO (IRS) 2019</a></footer>
+  <footer><a target="blank" href="#">INSPECCION RETRABAJO SORTEO (IRS) 2019</a></footer>
 </div>
 </body>
 </html>
+
