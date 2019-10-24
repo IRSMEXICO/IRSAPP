@@ -127,6 +127,7 @@ if(isset($_POST['save_cliente'])){
 if ($foto == 0){
     
     $cols=$col->cat_mod_cliente1($id,$nombre,$foto_actual);
+    
 }
 else{
     $ruta_archivos = '../content/img/';
@@ -170,11 +171,13 @@ if(isset($_POST['add_pieza'])){
     $ruta_img="../../content/img/piezas/IMG_$piezas.jpg";
     $name_img="IMG_$piezas.jpg";
     $ruta="../content/img/piezas/";
-    move_uploaded_file($foto, "$ruta$name_img");
+    move_uploaded_file( $_FILES[ 'foto' ][ 'tmp_name' ], $ruta.$name_img);
     $add_cliente=new consul();
     $add=$add_cliente->cat_add_cliente_pieza($ruta_img,$cliente,$piezas);
     }
-
+/*----------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
     if(isset($_POST['save_piezas'])){
         $id_cliente= $_POST['id_cliente'];
         $id_pieza=$_POST['id_piezas'];
@@ -193,7 +196,8 @@ if(isset($_POST['add_pieza'])){
     }
         
         }
-
+/*----------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
     //--------------CLIENTE USUARIO---------------------//
     if(isset($_POST['add_cliente_usuario'])){
         $usuario=$_POST['usuario'];

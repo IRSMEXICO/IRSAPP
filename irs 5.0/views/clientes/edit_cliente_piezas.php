@@ -37,9 +37,8 @@ document.form1.file_input.value=<?php echo $row['foto'];?>;
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
 <?php include('../../views/clientes/nav.php');?>
-	</nav>
+
 	<div class="container">
 		<div class="content">
 			<h2>Datos del Catalogo de Piezas &raquo; Editar datos</h2>

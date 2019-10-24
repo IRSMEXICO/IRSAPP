@@ -27,9 +27,8 @@ foreach($informacion_c as $row){
 	</style>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
 <?php include('../../views/clientes/nav.php');?>
-	</nav>
+
 	<div class="container">
 		<div class="content">
 			<h2>Datos del Catalogo de Usuario &raquo; Editar datos</h2>

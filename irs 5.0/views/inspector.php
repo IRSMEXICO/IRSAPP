@@ -33,7 +33,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="../controller/home.php">
           <img src="../content/img/irs.png" width="130" height="30" alt="">
       </a>
     
@@ -58,9 +58,18 @@
           <!--**ORDEN SERVICIO**-->
           
            <!--REGISTRO AVANCES-->
-           <li class="nav-item active">
-            <a class="nav-link" href="#">Registro Avances</a>
-          </li>
+           <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Registro de avances
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="registro_avance/admin.php">Admin</a>
+          <a class="dropdown-item" href="registro_avance/inspector.php">Inspector</a>
+          <a class="dropdown-item" href="registro_avance/registro_avances.php">registro de Avances</a>
+          <a class="dropdown-item" href="registro_avance/registro_avances5.php">registro de Avances5</a>
+          <a class="dropdown-item" href="registro_avance/registro_avances3.php">Registro de avances 3</a>    
+        </div>
+         </li>
           <li  class="nav-item active">
             <a style=" float: right;" class="nav-link" href="../model/cerrar.php">Cerrar Sesión</a>
           </li>

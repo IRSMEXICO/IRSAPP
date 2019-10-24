@@ -25,7 +25,7 @@ $tipo_act =  $url = $_GET['act'];
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
-<?php include('../../views/nav.php');?>
+<?php include('nav.php');?>
 	</nav>
 	<div class="container">
 		<div class="content">

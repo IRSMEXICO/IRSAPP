@@ -33,10 +33,9 @@ $informacion_c = $cliente->cliente_cons($id_cliente);
 
 </script>
 </head>
-<body onload="javascript:callme()">
-<nav class="navbar navbar-default navbar-fixed-top">
+<body onload="javascript:callme()">/
 <?php include('../../views/clientes/nav.php');?>
-	</nav>
+/
 	<div class="container">
 		<div class="content">
 			<h2>Datos del Catalogo de Clientes &raquo; Editar datos</h2>

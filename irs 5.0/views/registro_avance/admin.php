@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>USUARIO</title>
+    <title>ADMIN</title>
         <!--<title>Menú Principal | IRS</title>-->
         <!--BOOTSTRAP-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -33,54 +33,65 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="../../controller/home.php">
           <img src="../content/img/irs.png" width="130" height="30" alt="">
       </a>
     
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <!--Clientes
+          <!--Clientes-->
           <li class="nav-item active">
             <a class="nav-link" href="#">Clientes <span class="sr-only">(current)</span></a>
-          </li>-->
+          </li>
           <!--**Clientes**-->
 
-          <!--COLABORADORES
+          <!--COLABORADORES-->
           <li class="nav-item active">
             <a class="nav-link" href="#">Colaboradores</a>
-          </li>-->
+          </li>
           <!--**COLABORADORES**-->
 
-           <!--ORDEN SERVICIO
+           <!--ORDEN SERVICIO-->
            <li class="nav-item active">
-            <a class="nav-link" href="#">Orden de Servicio</a>
-          </li>-->
+            <a class="nav-link" href="../orden_servicio/orden_servicio.php">Orden de Servicio</a>
+          </li>
           <!--**ORDEN SERVICIO**-->
           
-           <!--REGISTRO AVANCES
-              <li class="nav-item active dropdown">
+           <!--REGISTRO AVANCES-->
+           <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Registro de avances
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="registro_avances/admin.php">Admin</a>
-          <a class="dropdown-item" href="registro_avances/inspector.php">Inspector</a>
-          <a class="dropdown-item" href="registro_avances/registro_avances.php">registro de Avances</a>
-          <a class="dropdown-item" href="registro_avances/registro_avances5.php">registro de Avances5</a>
-          <a class="dropdown-item" href="registro_avances/registro_avances3.php">Registro de avances 3</a>    
+          <a class="dropdown-item" href="admin.php">Admin</a>
+          <a class="dropdown-item" href="inspector.php">Inspector</a>
+          <a class="dropdown-item" href="registro_avances.php">registro de Avances</a>
+          <a class="dropdown-item" href="registro_avances5.php">registro de Avances5</a>
+          <a class="dropdown-item" href="registro_avances3.php">Registro de avances 3</a>    
         </div>
          </li>
           <!--**REGISTRO AVANCES**-->
 
-            <!--REPORTES-->
-            <li class="nav-item active">
-            <a class="nav-link" href="#">Reportes</a>
+           <!--ASIGNACION DE INSPECTORES-->
+           <li class="nav-item active">
+            <a class="nav-link" href="#">Asignación de Inspectores</a>
+          </li>
+          <!--**ASIGNACION DE INSPECTORES**-->
+
+
+          <!--REPORTES-->
+          <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reportes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Clientes</a>
+          <a class="dropdown-item" href="#">IRS</a>
+          </div>
           </li>
           <!--**REPORTES**-->
-          <li  class="nav-item active">
-            <a style=" float: right;" class="nav-link" href="../model/cerrar.php">Cerrar Sesión</a>
-          </li>
-          <!--CATALOGOS
+
+          <!--CATALOGOS-->
           <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Catalogos
@@ -94,8 +105,11 @@
           <a class="dropdown-item" href="cat_act/cat_captura.php">Tipo Captura</a>
           <a class="dropdown-item" href="cat_act/cat_reg.php">Tipo de Registro</a>
           <a class="dropdown-item" href="cat_act/cat_motivo_tm.php">Motivos TM</a>
-        </div>-->
+        </div>
       </li>
+      <li  class="nav-item active">
+            <a style=" float: right;" class="nav-link" href="../model/cerrar.php">Cerrar Sesión</a>
+          </li>
       <!--**CATALOGOS**-->
         </ul>
       </div>

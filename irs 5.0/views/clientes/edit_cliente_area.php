@@ -1,9 +1,10 @@
 <?php
 require_once("../../model/acciones.php");
-$id= $_GET['nik'];
+$id= $_GET['nik']; 
 $mod_cliente= new consul();
 $m_cliente = $mod_cliente->cat_cliente_area_info($id);
 $clientes=$mod_cliente->cat_cliente_area();
+$cliente = $mod_cliente->cliente(); 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,9 +27,8 @@ $clientes=$mod_cliente->cat_cliente_area();
 	</style>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
 <?php include('../../views/clientes/nav.php');?>
-	</nav>
+
 	<div class="container">
 		<div class="content">
 			<h2>Datos del Catalogo de Areas &raquo; Editar datos</h2>
@@ -50,7 +50,7 @@ $clientes=$mod_cliente->cat_cliente_area();
                     <div class="col-sm-3 control-label">
                     <select name="id_cliente" id="id_cliente" class="form-control" required>
                          <?php
-                        foreach ($clientes as $cnt) { 
+                        foreach ($cliente as $cnt) { 
                     ?>
                         <option value="<?php echo $cnt['id_cliente']; ?>"> <?php echo $cnt['cliente']; ?></option>
                         <?php

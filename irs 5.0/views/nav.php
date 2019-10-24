@@ -53,9 +53,18 @@
              <!--**ORDEN SERVICIO**-->
           
               <!--REGISTRO AVANCES-->
-               <li class="nav-item active">
-                 <a class="nav-link" href="#">Registro Avances</a>
-               </li>
+              <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Registro de avances
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="registro_avances/admin.php">Admin</a>
+          <a class="dropdown-item" href="registro_avances/inspector.php">Inspector</a>
+          <a class="dropdown-item" href="registro_avances/registro_avances.php">registro de Avances</a>
+          <a class="dropdown-item" href="registro_avances/registro_avances5.php">registro de Avances5</a>
+          <a class="dropdown-item" href="registro_avances/registro_avances3.php">Registro de avances 3</a>    
+        </div>
+         </li>
           <!--**REGISTRO AVANCES**-->
 
             <!--REPORTES-->

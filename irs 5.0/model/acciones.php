@@ -392,7 +392,10 @@ public function cat_del_cliente_area($id){
 }
 //------------------------PIEZAS------------------------//
 public function cat_cliente_pieza(){
-    $cliente_area=$this->db->query("SELECT * FROM cat_cliente_pieza LEFT JOIN cat_cliente ON cat_cliente_pieza.id_cliente = cat_cliente.id_cliente");
+    $cliente_area=$this->db->query("SELECT cat_cliente_pieza.id_pieza,
+    cat_cliente.cliente,
+    cat_cliente_pieza.piezas,
+    cat_cliente_pieza.foto FROM cat_cliente_pieza LEFT JOIN cat_cliente ON cat_cliente_pieza.id_cliente = cat_cliente.id_cliente");
     while($filas=$cliente_area->fetch_assoc()){
         $this->lista[]=$filas;
     }
