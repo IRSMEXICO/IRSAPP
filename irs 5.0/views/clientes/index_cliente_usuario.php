@@ -38,10 +38,32 @@ $(this).show();
 });
 		  </script>
 	<style>
-		.content {
-			margin-top: 135px;
-		}
-	</style>
+    .content {
+      margin-top: 135px;
+    }
+
+  .hidetext { -webkit-text-security: disc; /* Default */ }
+  
+  @media (min-width: 1200px){
+.container {
+    max-width: 1212px;
+}
+  }
+
+.container {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.table td, .table th {
+    padding: .50rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+  </style>
 
 </head>
 <body>
@@ -54,15 +76,16 @@ $(this).show();
 			<hr />
 			<br />
 
-			<form style="float: right;" action= "add_cliente_usuario.php">
-			<input type="text" id="search" placeholder="buscar">
-				<input type="submit"  class="btn btn-success" value="Agregar Datos">
+			<form class="form-inline my-2 my-lg-0"  style="float: right;" action= "add_cliente_usuario.php">
+			<input type="text" id="search" class="form-control mr-sm-2" placeholder="Buscar">
+				<button style="float: right;"   type="submit"  class="btn btn-success" value="Agregar Datos"><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
 			</form>
 			<br />
 			<br />
 			<div class="table-responsive">
-			<table id="mytable" class="table table-striped table-hover">
-				<tr>
+			<table id="mytable" class="table table-hover">
+			<thead class="thead-light">
+			<tr>
 				
 					<th>ID Usuario</th>
 					<th>Cliente</th>
@@ -73,6 +96,7 @@ $(this).show();
                     <th>Acciones </th>
 										
 				</tr>
+				</thead>
 				<?php foreach ($informacion_c  as $row){?>
 						<tr>
 							
@@ -83,8 +107,8 @@ $(this).show();
 							<td><?php echo $row['cuenta']?></td>
 							<td class="hidetext" ><?php echo $row['contra']?></td>
 							<td>
-								<a href="edit_cliente_usuario.php?nik=<?php echo $row['id']?>" title="Editar datos" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit" aria-hId_usuarioden="true"></span>Editar datos</a>
-								<a href="../../controller/del_cliente_usuario.php?id=<?php echo $row['id'];?>" title="Eliminar" onclick="return confirm('¿Esta seguro de borrar al cliente <?php echo $data['cliente'];?>);" class="btn btn-danger btn-sm">Eliminar</a>
+								<a href="edit_cliente_usuario.php?nik=<?php echo $row['id']?>" title="Editar datos" class="btn btn-info btn-sm"><span class="fa fa-refresh fa-spin"></span> Editar datos</a>
+								<a href="../../controller/del_cliente_usuario.php?id=<?php echo $row['id'];?>" title="Eliminar" onclick="return confirm('¿Esta seguro de borrar al cliente <?php echo $data['cliente'];?>);" class="btn btn-danger btn-sm"><span class="fas fa-trash-alt" ></span> Eliminar</a>
 							</td>
 				<?php }?>
 			</table>

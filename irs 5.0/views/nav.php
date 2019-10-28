@@ -52,6 +52,12 @@
                 </li>
              <!--**ORDEN SERVICIO**-->
           
+                 <!--OS INSPECTORES-->
+                 <li class="nav-item active">
+                 <a class="nav-link" href="#">OS Inspectores</a>
+               </li>
+              <!--**OS INSPECTORES**-->
+
               <!--REGISTRO AVANCES-->
               <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,7 +67,7 @@
           <a class="dropdown-item" href="registro_avances/admin.php">Admin</a>
           <a class="dropdown-item" href="registro_avances/inspector.php">Inspector</a>
           <a class="dropdown-item" href="registro_avances/registro_avances.php">registro de Avances</a>
-          <a class="dropdown-item" href="registro_avances/registro_avances5.php">registro de Avances5</a>
+          <a class="dropdown-item" href="registro_avances/registro_avances2.php">registro de Avances2</a>
           <a class="dropdown-item" href="registro_avances/registro_avances3.php">Registro de avances 3</a>    
         </div>
          </li>
@@ -73,6 +79,12 @@
           </li>
           <!--**REPORTES**-->
 
+             <!--REPORTES IRS-->
+             <li class="nav-item active">
+            <a class="nav-link" href="#">Reportes IRS</a>
+            </li>
+            <!--**REPORTES IRS**-->
+            
           <!--CATALOGOS-->
           <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,6 +99,7 @@
           <a class="dropdown-item" href="cat_captura.php">Tipo Captura</a>
           <a class="dropdown-item" href="cat_reg.php">Tipo de Registro</a>
           <a class="dropdown-item" href="cat_motivo_tm.php">Motivos TM</a>
+          <a class="dropdown-item" href="cat_roles.php">Roles</a>
         </div>
       </li>
       <li  class="nav-item active">

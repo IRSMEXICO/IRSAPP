@@ -51,7 +51,13 @@
                    <a class="nav-link" href="../orden_servicio/orden_servicio.php">Orden de Servicio</a>
                 </li>
              <!--**ORDEN SERVICIO**-->
-          
+
+                <!--OS INSPECTORES-->
+                <li class="nav-item active">
+                 <a class="nav-link" href="#">OS Inspectores</a>
+               </li>
+              <!--**OS INSPECTORES**-->
+
               <!--REGISTRO AVANCES-->
               <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,12 +72,18 @@
         </div>
          </li>
           <!--**REGISTRO AVANCES**-->
-
-            <!--REPORTES-->
-            <li class="nav-item active">
-            <a class="nav-link" href="#">Reportes</a>
+          
+          <!--REPORTES-->
+          <li class="nav-item active">
+          <a class="nav-link" href="#">Reportes</a>
           </li>
           <!--**REPORTES**-->
+
+          <!--REPORTES IRS-->
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Reportes IRS</a>
+            </li>
+            <!--**REPORTES IRS**-->
 
           <!--CATALOGOS-->
           <li class="nav-item active dropdown">

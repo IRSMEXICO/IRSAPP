@@ -87,6 +87,7 @@
           <a class="dropdown-item" href="cat_captura.php">Tipo Captura</a>
           <a class="dropdown-item" href="cat_reg.php">Tipo de Registro</a>
           <a class="dropdown-item" href="cat_motivo_tm.php">Motivos TM</a>
+          <a class="dropdown-item" href="cat_roles.php">Roles</a>
         </div>
       </li>
       <li  class="nav-item active">

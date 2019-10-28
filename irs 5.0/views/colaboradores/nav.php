@@ -3,7 +3,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="../../controller/home.php">
+      <a class="navbar-brand" href="#">
           <img src="../../content/img/irs.png" width="130" height="30" alt="">
       </a>
     
@@ -61,6 +61,7 @@
           <a class="dropdown-item" href="../cat_act/cat_captura.php">Tipo Captura</a>
           <a class="dropdown-item" href="../cat_act/cat_reg.php">Tipo de Registro</a>
           <a class="dropdown-item" href="../cat_act/cat_motivo_tm.php">Motivos TM</a>
+          <a class="dropdown-item" href="../cat_act/cat_roles.php">Roles</a>
         </div>
       </li>
       <li  class="nav-item active">

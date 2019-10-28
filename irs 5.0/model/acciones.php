@@ -1,6 +1,6 @@
 <?php
 include 'conexion.php';
-class consul{
+	class consul{
     private $db;//database
     private $lista;
     private $prov;
@@ -71,6 +71,13 @@ public function ins_turno($turno){
     $tipo_turno= $this->db->query("INSERT INTO cat_turno (tipo_turno) values ('$turno')");
     echo'<script type="text/javascript">
 						alert("'.$turno.' se ha registrado correctamente");
+						window.history.go(-1);
+						</script>';
+}
+public function ins_rol($rol){
+    $tipo_rol= $this->db->query("INSERT INTO cat_rol (tipo_rol) values ('$rol')");
+    echo'<script type="text/javascript">
+						alert("'.$rol.' se ha registrado correctamente");
 						window.history.go(-1);
 						</script>';
 }
@@ -265,7 +272,8 @@ public function cat_del_turno($id){
 
 //------------------------COLABORADORES------------------------//
 public function colaboradores(){
-    $col=$this->db->query("SELECT * FROM cat_colaboradores");
+    $col=$this->db->query("SELECT * FROM cat_colaboradores LEFT JOIN cat_rol ON cat_colaboradores.id_rol = cat_rol.id_rol order by Id_usuario");
+   // SELECT * FROM cat_cliente_area LEFT JOIN cat_cliente ON cat_cliente_area.id_cliente = cat_cliente.id_cliente"
     while($filas=$col->fetch_assoc()){
         $this->lista[]=$filas;
     }
@@ -273,7 +281,8 @@ public function colaboradores(){
     }
 
 public function colaboradores_cons($id_col){
-    $cols=$this->db->query("SELECT * FROM cat_colaboradores WHERE Id_usuario ='$id_col'");
+    $cols=$this->db->query("SELECT * FROM cat_colaboradores LEFT JOIN cat_rol ON cat_colaboradores.id_rol = cat_rol.id_rol WHERE Id_usuario=$id_col");
+    //SELECT * FROM cat_cliente_area LEFT JOIN cat_cliente ON cat_cliente_area.id_cliente = cat_cliente.id_cliente WHERE id_area='$id'"
     while($filas=$cols->fetch_assoc()){
         $this->lista[]=$filas;
     }
@@ -281,7 +290,7 @@ public function colaboradores_cons($id_col){
     }
 
 public function cat_mod_colaboradores($id_col,$nombre,$email,$cuenta,$contra,$rol){
-     $cat_colaboradores=$this->db->query("UPDATE cat_colaboradores set  tipo_usuario='$nombre',email='$email',cuenta='$cuenta',contra='$contra',rol='$rol' WHERE Id_usuario='$id_col'");
+     $cat_colaboradores=$this->db->query("UPDATE cat_colaboradores set  tipo_usuario='$nombre',email='$email',cuenta='$cuenta',contra='$contra',id_rol='$rol' WHERE Id_usuario='$id_col'");
     echo'<script type="text/javascript">
     alert("modificación exitosa");
     window.history.go(-2);
@@ -297,7 +306,7 @@ public function cat_mod_colaboradores($id_col,$nombre,$email,$cuenta,$contra,$ro
         </script>';
     }
     public function cat_add_colaboradores($nombre,$email,$cuenta,$contra,$rol){
-        $cat_colaboradores=$this->db->query("INSERT INTO cat_colaboradores (tipo_usuario,email,cuenta,contra,rol) VALUES('$nombre','$email','$cuenta','$contra','$rol')");
+        $cat_colaboradores=$this->db->query("INSERT INTO cat_colaboradores (tipo_usuario,email,cuenta,contra,id_rol) VALUES('$nombre','$email','$cuenta','$contra','$rol')");
        echo'<script type="text/javascript">
        alert("Colaborador agregado exitosamente");
        window.history.go(-2);
@@ -410,7 +419,11 @@ public function cat_add_cliente_pieza($ruta_img,$cliente,$piezas){
 }
 
 public function cat_cliente_pieza_info($id){
-    $cliente_area=$this->db->query("SELECT * FROM cat_cliente_pieza LEFT JOIN cat_cliente ON cat_cliente_pieza.id_cliente = cat_cliente.id_cliente WHERE id_pieza='$id'");
+    $cliente_area=$this->db->query("SELECT cat_cliente_pieza.id_pieza,
+    cat_cliente.cliente,
+    cat_cliente_pieza.piezas,
+    cat_cliente_pieza.foto
+     FROM cat_cliente_pieza LEFT JOIN cat_cliente ON cat_cliente_pieza.id_cliente = cat_cliente.id_cliente WHERE id_pieza='$id'");
     while($filas=$cliente_area->fetch_assoc()){
         $this->lista[]=$filas;
     }
@@ -477,5 +490,40 @@ public function del_cliente_usuario($id){
     window.location.href="../views/clientes/index_cliente_usuario.php";
     </script>';
 }
+//------------------------ROLES------------------------//
+public function rol(){
+    $rol=$this->db->query("SELECT * FROM cat_rol");
+    while($filas=$rol->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
+
+public function rol_cons($id_rol){
+    $rols=$this->db->query("SELECT * FROM cat_rol WHERE id_rol ='$id_rol'");
+    while($filas=$rols->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
+
+public function cat_mod_rol($tipo_rol,$id_rol){
+    $cat_rol=$this->db->query("UPDATE cat_rol set tipo_rol='$tipo_rol' WHERE id_rol='$id_rol'");
+   echo'<script type="text/javascript">
+   alert("modificación exitosa");
+   window.history.go(-2);
+   </script>';
+   }
+
+   public function cat_del_rol($id_rol){
+    $del_rol=$this->db->query("DELETE FROM cat_rol WHERE id_rol ='$id_rol'");
+    echo'<script type="text/javascript">
+    alert("Rol eliminado correctamente");
+    window.history.go(-1);
+    </script>';
+}   
+
+
+
 }
 ?>

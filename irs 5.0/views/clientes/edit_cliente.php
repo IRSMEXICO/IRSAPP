@@ -7,8 +7,8 @@ $informacion_c = $cliente->cliente_cons($id_cliente);
 <!DOCTYPE html>
 <html lang="es">
 <head>
-			<?php
-				foreach ($informacion_c as $row) { 
+		<?php
+			foreach ($informacion_c as $row) { 
 		?>
 		<link href="css/style_nav.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -33,9 +33,9 @@ $informacion_c = $cliente->cliente_cons($id_cliente);
 
 </script>
 </head>
-<body onload="javascript:callme()">/
+<body onload="javascript:callme()">
 <?php include('../../views/clientes/nav.php');?>
-/
+
 	<div class="container">
 		<div class="content">
 			<h2>Datos del Catalogo de Clientes &raquo; Editar datos</h2>

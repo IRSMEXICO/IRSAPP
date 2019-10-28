@@ -43,16 +43,11 @@ $colaboradores = $col->clientes();
 	<div class="container">
 		<div class="content">
 			<h2>Orden de servicio</h2>
-			<hr />
-			
-			
-			<form style="float: right;"  action="buscar.php" method="POST" autocomplete="off">
-			<input type="text" class="form-control pull-right"  id="search" placeholder="Buscar">
-			</form>
+			<hr />	
 			<br />
 			<br />
 			<form style="float: right;" action= "add_colaboradores.php">
-			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
+			<input type="text" class="form-control pull-right"  id="search" placeholder="Buscar">
 			</form>
 			<br />
 			<br />

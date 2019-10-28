@@ -46,7 +46,7 @@ document.form1.file_input.value=<?php echo $row['foto'];?>;
 			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id_pieza" value="<?php echo $row['id_pieza']; ?>">
 			<input type="hidden" name="foto_actual" name="foto_actual" value="<?php echo $row['foto']; ?>">
-      <input type="hidden" name="foto_remove" name="foto_remove" value="<?php echo $row['foto']; ?>">  
+      		<input type="hidden" name="foto_remove" name="foto_remove" value="<?php echo $row['foto']; ?>">  
       
 				<div class="form-group">
 					<label class="col-sm-3 control-label">ID</label>
@@ -75,13 +75,13 @@ document.form1.file_input.value=<?php echo $row['foto'];?>;
 				<div class="form-group">
 	          <label class="col-sm-3 control-label" for="foto">Logo Actual</label>
               <div style="margin-left: 0.9rem" class="prevPhoto col-sm-3">
-                	 <img src="<?php echo $row['foto']; ?>">
+                	 <img width="30%" height="50%" src="../../content/img/<?php echo $row['foto']; ?>">
 						 </div>
 						 <label class="col-sm-3 control-label" for="foto">logo nuevo</label><br>
 						 <img id="imgSalida" width="30%" height="50%" src="" />
                 
                 <div class="upimg">
-					        <input name="file_input" id="file_input" type="file" accept="image/*" />
+					<input name="file_input" id="file_input" type="file" accept="image/*" />
                 </div>
                <div id="form_alert"></div>
                 </div>		

@@ -1,3 +1,8 @@
+<?php
+require_once("../../model/acciones.php");
+$rol_info= new consul();
+$rol = $rol_info->rol(); 
+?>
 
 <!DOCTYPE html>
 
@@ -25,7 +30,7 @@
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
   	   
         <script type="text/javascript">
-function mostrarPassword(){
+		function mostrarPassword(){
 		var cambio = document.getElementById("txtPassword");
 		if(cambio.type == "password"){
 			cambio.type = "text";
@@ -94,7 +99,15 @@ function mostrarPassword(){
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Rol</label>
 					<div class="col-sm-4">
-            <input type="text" name="rol" class="form-control" placeholder="Rol" required>
+					<select name="id_rol" id="id_rol" class="form-control" required>
+                         <?php
+                        foreach ($rol as $row) { 
+                    ?>
+                        <option value="<?php echo $row['id_rol']; ?>"> <?php echo $row['tipo_rol']; ?></option>
+                        <?php
+                        }
+                    ?>
+                        </select>	
 					</div>
         </div>
         

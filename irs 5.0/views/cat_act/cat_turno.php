@@ -54,8 +54,8 @@ $(this).show();
 
 			<br />
 
-			<form style="float: right;" action= "turno.php">
-			<input type="text" id="search" placeholder="buscar">
+			<form class="form-inline my-2 my-lg-0"style="float: right;" action= "turno.php">
+			<input type="text"class="form-control mr-sm-2" id="search" placeholder="Buscar">
 			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
             </form>
 			<br />

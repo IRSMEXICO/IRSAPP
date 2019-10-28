@@ -32,6 +32,26 @@ $colaboradores = $col->colaboradores();
     }
 
   .hidetext { -webkit-text-security: disc; /* Default */ }
+  
+  @media (min-width: 1200px){
+.container {
+    max-width: 1212px;
+}
+  }
+
+.container {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.table td, .table th {
+    padding: .50rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
   </style>
         
     </head>
@@ -43,14 +63,8 @@ $colaboradores = $col->colaboradores();
 		<div class="content">
 			<h2>Colaboradores</h2>
 			<hr />
-			
-			
-			<form style="float: right;"  action="buscar.php" method="POST" autocomplete="off">
-			<input type="text" class="form-control pull-right"  id="search" placeholder="Buscar">
-			</form>
-			<br />
-			<br />
-			<form style="float: right;" action= "add_colaboradores.php">
+			<form class="form-inline my-2 my-lg-0" style="float: right;"  action="add_colaboradores.php" method="POST" autocomplete="off">
+			<input type="text" class="form-control mr-sm-2"  id="search" placeholder="Buscar">
 			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
 			</form>
 			<br />
@@ -84,7 +98,7 @@ foreach ($colaboradores as $cols) {
 							<td><?php echo $cols['email']?></td>
 							<td><?php echo $cols['cuenta']?></td>
 							<td class="hidetext"><?php echo $cols['contra']?></td>
-							<td><?php echo $cols['rol']?></td>
+							<td><?php echo $cols['tipo_rol']?></td>
 							<td>
 							
 								<a href="edit_colaboradores.php?nik=<?php echo $cols['Id_usuario']?>" title="Editar datos" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span> Editar Datos</a>

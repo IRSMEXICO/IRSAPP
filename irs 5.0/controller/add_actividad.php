@@ -46,6 +46,11 @@ elseif(isset($_POST['add_turno'])){
     $cat_turno=new consul();
     $ins_turno=$cat_turno->ins_turno($turno);    
 }
+elseif(isset($_POST['add_rol'])){
+    $rol=$_POST['tipo_rol'];
+    $cat_rol=new consul();
+    $ins_rol=$cat_rol->ins_rol($rol);
+}
 //UPDATE -------------------MODIFICAR---------------------------------//
 if(isset($_POST['save_act'])){
 $id=$_POST['id'];
@@ -53,6 +58,12 @@ $tipo_actividad=$_POST['tipo_actividad'];
 $tipo_act=new consul();
 $act_mod=$tipo_act->cat_mod_actividades($tipo_actividad,$id);  
 } 
+if(isset($_POST['save_rol'])){
+    $id=$_POST['id'];
+    $tipo_rol=$_POST['tipo_rol'];
+    $tipo_roles=new consul();
+    $act_rol=$tipo_roles->cat_mod_rol($tipo_rol,$id);
+}
 if(isset($_POST['save_captura'])){
     $id=$_POST['id'];
     $tipo_captura=$_POST['tipo_captura'];
@@ -99,24 +110,24 @@ if(isset($_POST['save_contrato'])){
             }
 //----------colaboradores---------//
 if(isset($_POST['save_colaboradores'])){
-$id_col=$_POST['Id_usuario'];
-$nombre=$_POST['tipo_usuario'];
-$email=$_POST['email'];
-$cuenta=$_POST['cuenta'];
-$contra=$_POST['contra'];
-$rol=$_POST['rol'];
-$col=new consul();
-$cols=$col->cat_mod_colaboradores($id_col,$nombre,$email,$cuenta,$contra,$rol);
-}
-if(isset($_POST['add_colaborador'])){
+    $id_col=$_POST['Id_usuario'];
     $nombre=$_POST['tipo_usuario'];
     $email=$_POST['email'];
     $cuenta=$_POST['cuenta'];
     $contra=$_POST['contra'];
-    $rol=$_POST['rol'];
+    $rol=$_POST['id_rol'];
     $col=new consul();
-    $cols=$col->cat_add_colaboradores($nombre,$email,$cuenta,$contra,$rol);
+    $cols=$col->cat_mod_colaboradores($id_col,$nombre,$email,$cuenta,$contra,$rol);
     }
+    if(isset($_POST['add_colaborador'])){
+        $nombre=$_POST['tipo_usuario'];
+        $email=$_POST['email'];
+        $cuenta=$_POST['cuenta'];
+        $contra=$_POST['contra'];
+        $rol=$_POST['id_rol'];
+        $col=new consul();
+        $cols=$col->cat_add_colaboradores($nombre,$email,$cuenta,$contra,$rol);
+        }
 //----------clientes---------//
 if(isset($_POST['save_cliente'])){
     $id= $_POST['id_cliente'];

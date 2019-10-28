@@ -4,6 +4,7 @@ require_once("../../model/acciones.php");
 $id_col = $_GET['nik'];
 $col=new consul();
 $colaboradores=$col->colaboradores_cons($id_col);
+$roles=$col->rol();
 ?>
 <!DOCTYPE html>
 
@@ -50,6 +51,9 @@ $colaboradores=$col->colaboradores_cons($id_col);
     .content {
       margin-top: 135px;
     }
+	.notItemOne option:first-child{
+		display: none;
+	}
   </style>
         <!--**SLIDER**-->
     </head>
@@ -104,9 +108,17 @@ foreach ($colaboradores as $row) {
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Rol</label>
-					<div class="col-sm-4">
-						<input type="text" name="rol" value="<?php echo $row ['rol']; ?>" class="form-control" placeholder="rol" required>
-					</div> 
+                    <div class="col-sm-4 control-label">
+                    <select name="id_rol" id="id_rol" class="form-control notItemOne" required>
+                         <?php
+                        foreach ($roles as $ro) { 
+                    ?>
+                        <option value="<?php echo $ro['id_rol']; ?>"> <?php echo $ro['tipo_rol']; ?></option>
+                        <?php
+                        }
+                    ?>
+                        </select>
+                    </div>
 				</div>
 				<?php } ?>
 				<div class="form-group">

@@ -5,7 +5,7 @@
 	      <link href="../../content/css/bootstrap.min.css" rel="stylesheet">
         <link href="../../content/css/style_nav.css" rel="stylesheet">
         <style>
-          .box-container{margin-top: 10%;}
+          .box-container{margin-top: 5%;}
 
           body button{
             background-color: transparent !important;
@@ -26,7 +26,7 @@
 <!------------------------------------------------------------------------------------>
     <div class="col-sm-4">
     <button type="button" class="btn btn-primary">
-    <img src="../../content/img/logo_cat.jpg" width="100" height="100">
+    <img src="../../content/img/logo_caterpillar.png" id="imagen" width="100" height="100">
     </button>
     </div>
 
@@ -38,7 +38,7 @@
 
     <div class="col-sm-4">
     <button type="button" class="btn btn-primary">
-        <img src="../../content/img/logo_prolamsa.jpg" width="100" height="100">
+        <img src="../../content/img/logo_prolamsa.png" width="100" height="100">
     </button>
     </div>
   </div>
@@ -58,7 +58,7 @@
     
         <div class="col-sm-4">
         <button type="button" class="btn btn-primary">
-            <img src="../../content/img/logo_magna.jpg" width="100" height="100">
+            <img src="../../content/img/logo_magna.png" width="100" height="100">
         </button>
         </div>
       </div>
@@ -86,7 +86,14 @@
       </div>
     <!------------------------------------------------------------------------------------>
     </div>
-    
+
+    <script>
+    function imagen(){
+    var src = document.getElementById("imagen").src;
+    setTimeout("location.href=registro_avances2.php", 5000);
+      
+                      }
+    </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="../../content/js/bootstrap.min.js"></script> 
 </body>

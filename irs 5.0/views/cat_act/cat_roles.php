@@ -1,8 +1,8 @@
 <?php 
 include("../../model/sesiones.php");//valida sesiona activa esta linea va en cada php que muestre info o que interacciones con el cliente
 require_once("../../model/acciones.php");
-$info_captura = new consul();
-$captura = $info_captura->cat_captura();
+$info_roles = new consul();
+$roles = $info_roles->rol();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,7 +13,7 @@ $captura = $info_captura->cat_captura();
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Datos de Catalogo de Captura</title>
+	<title>Datos de Catalogo de Roles</title>
 
 	<!-- Bootstrap -->
 	<link href="../../content/css/bootstrap.min.css" rel="stylesheet">
@@ -44,41 +44,40 @@ $(this).show();
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<?php include('nav.php');?>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<?php include('../../views/nav.php');?>
 	</nav>
 	<div class="container">
 		<div class="content">
-			<h2>Catalogo de Captura</h2>
+			<h2>Catalogo de Roles</h2>
 			<hr />
-			<br />
 
-			<form class="form-inline my-2 my-lg-0" style="float: right;" action= "captura.php">
-			<input type="text"class="form-control mr-sm-2" id="search" placeholder="Buscar">
-			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
-</form>
+			<br />
+			<form class="form-inline my-2 my-lg-0"style="float: right;" action= "roles.php">
+			<input type="text" class="form-control mr-sm-2" id="search" placeholder="Buscar">
+			<button style="float: right;" type="submit" class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
+            </form>
 			<br />
 			<br />
 			<div class="table-responsive">
-			<table class="table table-hover">
-			<thead id="mytable" class="thead-light">
+			<table id="mytable" class="table table-hover">
+				<thead class="thead-light">
 				<tr>
 				
 					<th>ID</th>
-                    <th>Tipo de Captura</th>
+					<th>Roles </th>
                     <th>Acciones </th>
-										
+					
 				</tr>
 				</thead>
-				<?php foreach ($captura as $cap) { ?>
+				<?php foreach ($roles as $rol) { ?>
 						<tr>
-							<td><?php echo $cap['id_captura']; ?></td>
-							<td><?php echo $cap['tipo_captura']; ?></td>
+							<td><?php echo $rol['id_rol']; ?></td>
+							<td><?php echo $rol['tipo_rol']; ?></td>
 							<td>
-								<a href="mod_captura.php?id=<?php echo $cap['id_captura'];?>&cap=<?php echo $cap['tipo_captura']; ?>" title="Editar datos" class="btn btn-info btn-sm"><span class="fa fa-refresh fa-spin"></span> Editar Datos</a>
-								<a href="../../controller/del_captura.php?id=<?php echo $cap['id_captura'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar la captura <?php echo $actividad['tipo_captura'];?>?');" class="btn btn-danger btn-sm"><span class="fas fa-trash-alt" ></span> Eliminar</a>
+								<a href="mod_roles.php?id=<?php echo $rol['id_rol'];?>&act=<?php echo $rol['tipo_rol']; ?>" title="Editar datos" class="btn btn-info btn-sm"><span class="fa fa-refresh fa-spin"></span> Editar Datos</a>
+								<a href="../../controller/del_rol.php?id=<?php echo $rol['id_rol'];?>" title="Eliminar" onclick="return confirm('¿Estas seguro que deseas eliminar el rol <?php echo $rol['tipo_rol'];?>?');" class="btn btn-danger btn-sm"><span class="fas fa-trash-alt" ></span> Eliminar</a>
 							</td>
-							
 							 </tr>
 				<?php } ?>
 			</table>
