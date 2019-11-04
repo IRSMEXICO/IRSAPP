@@ -7,7 +7,7 @@ $cliente = $cliente_info->cliente();
 <html lang="es">
 <head>
 
-<link href="css/style_nav.css" rel="stylesheet">
+<link href="../../content/css/style_nav.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -57,15 +57,18 @@ $cliente = $cliente_info->cliente();
                 <div class="form-group">
 	                  <label class="col-sm-3 control-label" for="foto">Foto</label>
                       <div style="margin-left: 0.9rem" class="prevPhoto col-sm-3">
-                     <span class="delPhoto notBlock">X</span>
                      <label for="foto"></label>
+                     <img id="imgSalida" width="50%" height="50%" src="" />
                       </div>
-                        <div class="upimg">
-                        <input type="file" name="foto" id="foto">
                       </div>
+					                 <div class="form-group">
+					                   <label class="col-sm-3 control-label">&nbsp;</label>
+                             <div class="col-sm-3 upimg">
+                             <input type="file" name="foto" id="foto">
+                          </div>
                    <div id="form_alert"></div>
                 </div>	
-
+                <br>
 				<div class="form-group">
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
@@ -82,7 +85,34 @@ $cliente = $cliente_info->cliente();
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
-	
+  <script type="text/javascript">
+	$(window).load(function(){
+
+$(function() {
+ $('#foto').change(function(e) {
+	 addImage(e); 
+	});
+
+	function addImage(e){
+	 var file = e.target.files[0],
+	 imageType = /image.*/;
+   
+	 if (!file.type.match(imageType))
+	  return;
+ 
+	 var reader = new FileReader();
+	 reader.onload = fileOnload;
+	 reader.readAsDataURL(file);
+	}
+ 
+	function fileOnload(e) {
+	 var result=e.target.result;
+	 $('#imgSalida').attr("src",result);
+	}
+   });
+ });
+
+</script>
 </body>
 </html>
 

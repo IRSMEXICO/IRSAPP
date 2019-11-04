@@ -60,6 +60,7 @@ $actividades=$co4->actividades($id);
             <table class="table table-bordered">
             <tr>
             <td>
+            <label>id_cliente</label><input style="width:10%;text-align: center;" name="id_cliente" readonly value="<?php echo $id?>"><br>
             <label>Usuario: </label>
             <select name="usuarios">
             <?php foreach($usuarios as $rowU){?>
@@ -80,7 +81,7 @@ $actividades=$co4->actividades($id);
             <label>Actividad a realizar: &nbsp;</label>
             <select name="actividades">
             <?php foreach($actividades as $act){?>
-            <option value="<?php echo $act['id_actividad']; ?>"><?php echo $act['tipo_actividad']; ?></option>
+            <option value="<?php echo $act['id_codigo']; ?>"><?php echo $act['tipo_actividad']; ?></option>
             <?php } ?>
             </select>
             </td>
@@ -123,7 +124,7 @@ $actividades=$co4->actividades($id);
             </td>
             <td>
             <label>Seleciona Empleado: &nbsp;</label>
-            <select name="empleado">
+            <select name="id_empleado">
             <?php $empleado=$co6->empleados($id);
             foreach($empleado as $emp){?>
             <option value="<?php echo $emp['id_empleado'] ?>"><?php echo $emp['num_empleado']."-".$emp['nom_empleado'] ?></option>
@@ -141,7 +142,7 @@ $actividades=$co4->actividades($id);
             </td>
             <td>
             <label>Horarios PACTD: &nbsp;</label>
-            <select name="horarios_pactd">
+            <select name="horario_pactd">
             <option value="">Inicio Jor. - Fin Jor.</option>
             <option value="DIA">6:00am - 6:00pm</option>
             <option value="TARDE">N/A - N/A</option>
@@ -207,29 +208,29 @@ $actividades=$co4->actividades($id);
             </td>
             <td>
             <label>Selecciona Grupo o turno: &nbsp;</label><br>  
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d1"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d2"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d3"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d4"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d5"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d6"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d7"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d8"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d9"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d10"> 1 - Dia - 6:00am a 6:00pm<br>
             </td>  
             <td>
             <label>Selecciona Grupo o turno: &nbsp;</label><br>  
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n"> 3 - Noche - 6:00pm a 6:00am<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d11"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1d12"> 1 - Dia - 6:00am a 6:00pm<br>
+            <input type="checkbox" name="gpo_turno[]" value="1n13"> 3 - Noche - 6:00pm a 6:00am<br>
+            <input type="checkbox" name="gpo_turno[]" value="1n14"> 3 - Noche - 6:00pm a 6:00am<br>
+            <input type="checkbox" name="gpo_turno[]" value="1n15"> 3 - Noche - 6:00pm a 6:00am<br>
+            <input type="checkbox" name="gpo_turno[]" value="1n16"> 3 - Noche - 6:00pm a 6:00am<br>
+            <input type="checkbox" name="gpo_turno[]" value="1n17"> 3 - Noche - 6:00pm a 6:00am<br>
+            <input type="checkbox" name="gpo_turno[]" value="1n18"> 3 - Noche - 6:00pm a 6:00am<br>
+            <input type="checkbox" name="gpo_turno[]" value="1n19"> 3 - Noche - 6:00pm a 6:00am<br>
+            <input type="checkbox" name="gpo_turno[]" value="1n20"> 3 - Noche - 6:00pm a 6:00am<br>
             </td>             
             </tr>
             <div class="form-group">

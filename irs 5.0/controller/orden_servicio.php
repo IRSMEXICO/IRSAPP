@@ -1,6 +1,6 @@
 <?php
 include ("../model/orden_servicio.php");
-
+$id_cliente=$_POST['id_cliente'];
 $id_usuario=$_POST['usuarios'];
 $jornadas=$_POST['jornadas_horas'];
 $actividades=$_POST['actividades'];
@@ -22,5 +22,5 @@ $comentario=$_POST['comentario'];
 $dias = implode(',',$_POST['Days']);
 $gpo_turno=implode(',',$_POST['gpo_turno']);
 $obj=new consul();
-$iniciar=$obj->ins_orden($id_usuario,$jornadas,$actividades,$fecha_inicio,$toat,$id_contrato,$id_pieza,$turno,$id_empleado,$id_area,$horario_pactd,$precio_clnt,$correo_usuario,$captura_reporte,$sueldo_hora,$correo_irs,$trazabilidad,$comentario,$dias,$gpo_turno);
+$iniciar=$obj->ins_orden($id_cliente,$id_usuario,$jornadas,$actividades,$fecha_inicio,$toat,$id_contrato,$id_pieza,$turno,$id_empleado,$id_area,$horario_pactd,$precio_clnt,$correo_usuario,$captura_reporte,$sueldo_hora,$correo_irs,$trazabilidad,$comentario,$dias,$gpo_turno);
 ?>

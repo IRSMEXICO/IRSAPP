@@ -1,8 +1,9 @@
 <?php
 include("../../model/sesiones.php");//valida sesiona activa esta linea va en cada php que muestre info o que interacciones con el cliente
 require_once("../../model/orden_servicio.php");
+$id = $_GET['nik'];
 $col= new consul();
-$colaboradores = $col->clientes();
+$ordenes = $col->ordenes($id);
 ?>
 <!DOCTYPE html>
 
@@ -31,13 +32,6 @@ $colaboradores = $col->clientes();
     .content {
       margin-top: 135px;
     }
-			
-	.img_piezas img{
-  	 width: 60px;
-  	 height: auto;
-   	margin: auto;
-	}
-
 
   .hidetext { -webkit-text-security: disc; /* Default */ }
   </style>
@@ -65,9 +59,11 @@ $colaboradores = $col->clientes();
 				<thead class="thead-light">
 				<tr>
 				
-					<th>ID Cliente</th>
-                    <th>Cliente</th>
-					<th>Logo Cliente</th>
+					<th>ID orden</th>
+					<th>Usuario</th>
+                    <th>fecha inicio</th>
+					<th>jornadas</th>
+					<th>Actividaes</th>
 					<th>Acciones</th>
 					
 				   </tr>
@@ -75,16 +71,18 @@ $colaboradores = $col->clientes();
 				 
 
 <?php
-foreach ($colaboradores as $cols) { 
+foreach ($ordenes as $cols) { 
 	?>
 						<tr>
 							
-							<td><?php echo $cols['id_cliente']?></td>
-							<td><?php echo $cols['cliente']?></td>
-							<td class="img_piezas"><img src="<?php echo $cols['foto'];?>" alt="<?php echo $cols['cliente'];?>"></td>
+							<td><?php echo $cols['id_orden']?></td>
+							<td><?php echo $cols['usuario']?></td>
+							<td><?php echo $cols['fecha_inicio']?></td>
+							<td><?php echo $cols['jornadas']." hrs"?></td>
+							<td><?php echo $cols['tipo_actividad']?></td>
 							<td>
-								<a href="agregar_orden.php?nik=<?php echo $cols['id_cliente']?>" title="Generar Orden De Servicio" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span>Generar Orden de Servicio</a>
-								<a href="listado_ordenes.php?nik=<?php echo $cols['id_cliente']?>" title="Mostrar Orden De Servicio" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span>Mostrar Ordenes de Servicio</a>
+								<a href="detalle_orden.php?nik=<?php echo $cols['id_orden']?>" title="Ver detalle de Orden" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span>Ver detalles</a>
+								<a href="mostrar_orden.php?nik=<?php echo $cols['id_orden']?>" title="Modificar Orden" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span>modificar orden</a>
 							</td>
 							</tr>
 							<?php }	?>

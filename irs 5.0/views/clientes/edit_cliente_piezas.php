@@ -12,7 +12,8 @@ $cliente=$pieza->cliente();
 				foreach ($informacion_c as $row) { 
 		?>
 
-		<link href="css/style_nav.css" rel="stylesheet">
+        <link href="../../content/css/style_nav.css" rel="stylesheet">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -26,6 +27,7 @@ $cliente=$pieza->cliente();
 		.content {
 			margin-top: 80px;
 		}
+		
 	</style>
 		<script language="javascript">
 function callme()
@@ -43,6 +45,8 @@ document.form1.file_input.value=<?php echo $row['foto'];?>;
 		<div class="content">
 			<h2>Datos del Catalogo de Piezas &raquo; Editar datos</h2>
 			<hr />
+			<hr />
+
 			<form class="form-horizontal" action="../../controller/add_actividad.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id_pieza" value="<?php echo $row['id_pieza']; ?>">
 			<input type="hidden" name="foto_actual" name="foto_actual" value="<?php echo $row['foto']; ?>">
@@ -73,19 +77,24 @@ document.form1.file_input.value=<?php echo $row['foto'];?>;
 				</div>
 
 				<div class="form-group">
-	          <label class="col-sm-3 control-label" for="foto">Logo Actual</label>
+	          <label class="col-sm-3 control-label" for="foto">Pieza Actual</label>
               <div style="margin-left: 0.9rem" class="prevPhoto col-sm-3">
-                	 <img width="30%" height="50%" src="../../content/img/<?php echo $row['foto']; ?>">
+                	 <img width="80%" height="80%" src="../../content/img/<?php echo $row['foto']; ?>">
 						 </div>
-						 <label class="col-sm-3 control-label" for="foto">logo nuevo</label><br>
-						 <img id="imgSalida" width="30%" height="50%" src="" />
-                
-                <div class="upimg">
-					<input name="file_input" id="file_input" type="file" accept="image/*" />
+						 </div>
+			    <div class="form-group">
+				<label class="col-sm-3 control-label" for="foto">Pieza Nueva</label><br>
+						 <img id="imgSalida" width="20%" height="50%" src="" />
+						 <br>
+						 </div>
+						 <div class="form-group">
+					  <label class="col-sm-3 control-label">&nbsp;</label>
+                      <div class="col-sm-3 upimg">  
+					<input name="foto" id="foto" type="file" accept="image/*" />
                 </div>
                <div id="form_alert"></div>
                 </div>		
-
+				<br>
 				<div class="form-group">
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
@@ -107,7 +116,7 @@ document.form1.file_input.value=<?php echo $row['foto'];?>;
 	$(window).load(function(){
 
 $(function() {
- $('#file_input').change(function(e) {
+ $('#foto').change(function(e) {
 	 addImage(e); 
 	});
 

@@ -7,7 +7,7 @@
 
 <!--BOOTSTRAP-->
 		<link href="../../content/css/style_nav.css" rel="stylesheet">
-
+		
 		<!--**BOOTSTRAP**-->
        
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">

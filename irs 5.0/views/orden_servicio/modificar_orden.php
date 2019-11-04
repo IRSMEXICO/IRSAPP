@@ -1,8 +1,9 @@
 <?php
 include("../../model/sesiones.php");//valida sesiona activa esta linea va en cada php que muestre info o que interacciones con el cliente
 require_once("../../model/orden_servicio.php");
+/*$id_orden = $_GET['nik'];
 $col= new consul();
-$colaboradores = $col->clientes();
+$detalle = $col->detalle_orden($id_orden);*/
 ?>
 <!DOCTYPE html>
 
@@ -31,13 +32,6 @@ $colaboradores = $col->clientes();
     .content {
       margin-top: 135px;
     }
-			
-	.img_piezas img{
-  	 width: 60px;
-  	 height: auto;
-   	margin: auto;
-	}
-
 
   .hidetext { -webkit-text-security: disc; /* Default */ }
   </style>
@@ -49,46 +43,15 @@ $colaboradores = $col->clientes();
 	</nav>
 	<div class="container">
 		<div class="content">
-			<h2>Orden de servicio</h2>
+			<h2>Modificar Orden de servicio</h2>
 			<hr />	
-			<br />
-			<br />
 			<form style="float: right;" action= "add_colaboradores.php">
-			<input type="text" class="form-control pull-right"  id="search" placeholder="Buscar">
 			</form>
 			<br />
-			<br />
 			<div class="row">
-			
-			<div class="table-responsive">
-			<table id="mytable" class="table table-hover">
-				<thead class="thead-light">
-				<tr>
-				
-					<th>ID Cliente</th>
-                    <th>Cliente</th>
-					<th>Logo Cliente</th>
-					<th>Acciones</th>
-					
-				   </tr>
-				 </thead>
-				 
+            <h1>EN CONSTRUCCION....</h1>
+            <a href="orden_servicio.php" class="btn btn-warning">Regresar</a>
 
-<?php
-foreach ($colaboradores as $cols) { 
-	?>
-						<tr>
-							
-							<td><?php echo $cols['id_cliente']?></td>
-							<td><?php echo $cols['cliente']?></td>
-							<td class="img_piezas"><img src="<?php echo $cols['foto'];?>" alt="<?php echo $cols['cliente'];?>"></td>
-							<td>
-								<a href="agregar_orden.php?nik=<?php echo $cols['id_cliente']?>" title="Generar Orden De Servicio" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span>Generar Orden de Servicio</a>
-								<a href="listado_ordenes.php?nik=<?php echo $cols['id_cliente']?>" title="Mostrar Orden De Servicio" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span>Mostrar Ordenes de Servicio</a>
-							</td>
-							</tr>
-							<?php }	?>
-			</table>
 			</div> <!--div table responsive-->
 		
 	</div>

@@ -46,13 +46,19 @@ $informacion_c = $cliente->cliente();
 	                  <label class="col-sm-3 control-label" for="foto">Logo</label>
                       <div style="margin-left: 0.9rem"  class="prevPhoto col-sm-3">
                      <label for="foto"></label>
+					 <img id="imgSalida" width="50%" height="50%" src="" />
                       </div>
-                      <div class="upimg">
+					  </div>
+					  <div class="form-group">
+					  <label class="col-sm-3 control-label">&nbsp;</label>
+                      <div class="col-sm-3 upimg">
                         <input type="file" name="foto" id="foto">
                       </div>
                    <div id="form_alert"></div>
-                </div>	
-
+				   </div>
+                	
+				<br>
+				
 				<div class="form-group">
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
@@ -69,6 +75,33 @@ $informacion_c = $cliente->cliente();
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/functions.js"></script>
-	
+	<script type="text/javascript">
+	$(window).load(function(){
+
+$(function() {
+ $('#foto').change(function(e) {
+	 addImage(e); 
+	});
+
+	function addImage(e){
+	 var file = e.target.files[0],
+	 imageType = /image.*/;
+   
+	 if (!file.type.match(imageType))
+	  return;
+ 
+	 var reader = new FileReader();
+	 reader.onload = fileOnload;
+	 reader.readAsDataURL(file);
+	}
+ 
+	function fileOnload(e) {
+	 var result=e.target.result;
+	 $('#imgSalida').attr("src",result);
+	}
+   });
+ });
+
+</script>	
 </body>
 </html>

@@ -10,7 +10,8 @@ $informacion_c = $cliente->cliente_cons($id_cliente);
 		<?php
 			foreach ($informacion_c as $row) { 
 		?>
-		<link href="css/style_nav.css" rel="stylesheet">
+		<link href="../../content/css/style_nav.css" rel="stylesheet">
+
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -40,7 +41,7 @@ $informacion_c = $cliente->cliente_cons($id_cliente);
 		<div class="content">
 			<h2>Datos del Catalogo de Clientes &raquo; Editar datos</h2>
 			<hr />
-	
+			<hr />
 			<form name="form1" class="form-horizontal" action="../../controller/add_actividad.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id_cliente" value="<?php echo $row['id_cliente']; ?>">
 			<input type="hidden" name="foto_actual" name="foto_actual" value="<?php echo $row['foto']; ?>">
@@ -59,20 +60,24 @@ $informacion_c = $cliente->cliente_cons($id_cliente);
 					</div> 
 				</div>
 
-				<div class="form-group">
-	          <label class="col-sm-3 control-label" for="foto">Logo Actual</label>
-              <div style="margin-left: 0.9rem" class="prevPhoto col-sm-3">
-            	 <img width="30%" height="50%" src="../../content/img/<?php echo $row['foto']; ?>">
-						 </div>
-						 <label class="col-sm-3 control-label" for="foto">logo nuevo</label><br>
-						 <img id="imgSalida" width="30%" height="50%" src="" />
-                
-              <div class="upimg">
-					      <input name="file_input" value="<?php echo $row['foto']; ?>" id="file_input" type="file" accept="image/*" />
+			<div class="form-group">
+	        	  <label class="col-sm-3 control-label" for="foto">Logo Actual</label>
+              	  <div style="margin-left: 0.9rem" class="prevPhoto col-sm-3">
+            		  <img width="80%" height="80%" src="../../content/img/<?php echo $row['foto']; ?>">
+				 </div>
+				 </div>
+			    <div class="form-group">
+			 	 <label class="col-sm-3 control-label" for="foto">Logo nuevo</label><br>
+					<img id="imgSalida" width="20%" height="50%" src="" />
+					<br>
+					</div>
+					<div class="form-group">
+					  <label class="col-sm-3 control-label">&nbsp;</label>
+                      <div class="col-sm-3 upimg"> 
+					<input name="foto" value="<?php echo $row['foto']; ?>" id="foto" type="file" accept="image/*" />
               </div>
            <div id="form_alert"></div>
             </div>	
-
 				<div class="form-group">
 					<label class="col-sm-3 control-label">&nbsp;</label>
 					<div class="col-sm-6">
@@ -93,7 +98,7 @@ $informacion_c = $cliente->cliente_cons($id_cliente);
 	$(window).load(function(){
 
 $(function() {
- $('#file_input').change(function(e) {
+ $('#foto').change(function(e) {
 	 addImage(e); 
 	});
 
