@@ -18,10 +18,24 @@ $contrato = $info_contrato->cat_contrato();
 	<!-- Bootstrap -->
 	
 	<link href="../../content/css/style_nav.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
   	    <script src="../content/js/jquery.nivo.slider.js"></script>
-	     
+	      <script src="../../content/js/jquery.quicksearch.js" type="text/javascript"></script>
+		  <script>
+		  // Write on keyup event of keyword input element
+$(document).ready(function(){
+$("#search").keyup(function(){
+_this = this;
+// Show only matching TR, hide rest of them
+$.each($("#mytable tbody tr"), function() {
+if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+$(this).hide();
+else
+$(this).show();
+});
+});
+});
+		  </script>
 	<style>
 		.content {
 			margin-top: 50px;
@@ -39,13 +53,14 @@ $contrato = $info_contrato->cat_contrato();
 			<hr />
 			<br />
 			<form class="form-inline my-2 my-lg-0" style="float: right;" action= "contratos.php">
+			<input type="text" class="form-control mr-sm-2" id="search" placeholder="Buscar">
 			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
-			</form>
+</form>
 			<br />
 			<br />
 			<div class="table-responsive">
-			<table id="tablelol" class="table table-hover">
-			<thead class="thead-light">
+			<table id="mytable" class="table table-hover">
+				<thead class="thead-light">
 				<tr>
 				
 					<th>ID</th>
@@ -70,41 +85,5 @@ $contrato = $info_contrato->cat_contrato();
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="../../content/js/bootstrap.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-	<script type="text/javascript">
-	$(document).ready( function () {
-   		 $('#tablelol').DataTable({
-				language:{
-    			"sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ registros",
-                "sZeroRecords":    "No se encontraron resultados",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
-                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },
-                "buttons": {
-                    "copy": "Copiar",
-                    "colvis": "Visibilidad"
-				}
-			}
-		});
-	} );
-	</script>
-	<br>
 </body>
 </html>
