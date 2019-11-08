@@ -19,6 +19,7 @@ $colaboradores = $col->colaboradores();
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="../../content/js/busqueda.js"></script>
         <!--**FIN BUSQUEDA EN TABLAS**-->		
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
         <link href="../../content/css/style_nav.css" rel="stylesheet">
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,7 +29,7 @@ $colaboradores = $col->colaboradores();
         
         <style>
     .content {
-      margin-top: 135px;
+      margin-top: 80px;
     }
 
   .hidetext { -webkit-text-security: disc; /* Default */ }
@@ -64,7 +65,6 @@ $colaboradores = $col->colaboradores();
 			<h2>Colaboradores</h2>
 			<hr />
 			<form class="form-inline my-2 my-lg-0" style="float: right;"  action="add_colaboradores.php" method="POST" autocomplete="off">
-			<input type="text" class="form-control mr-sm-2"  id="search" placeholder="Buscar">
 			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
 			</form>
 			<br />
@@ -72,11 +72,11 @@ $colaboradores = $col->colaboradores();
 			<div class="row">
 			
 			<div class="table-responsive">
-			<table id="mytable" class="table table-hover">
+			<table id="tablelol" class="table table-hover">
 				<thead class="thead-light">
 				<tr>
 				
-					<th>ID Usuario</th>
+					<th>ID</th>
                     <th>Nombre de usuario</th>
 					<th>E-mail</th>
 					<th>Cuenta</th>
@@ -97,7 +97,7 @@ foreach ($colaboradores as $cols) {
 							<td><?php echo $cols['tipo_usuario']?></td>
 							<td><?php echo $cols['email']?></td>
 							<td><?php echo $cols['cuenta']?></td>
-							<td class="hidetext"><?php echo $cols['contra']?></td>
+							<td ><?php echo '******'?></td>
 							<td><?php echo $cols['tipo_rol']?></td>
 							<td>
 							
@@ -115,5 +115,41 @@ foreach ($colaboradores as $cols) {
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+	$(document).ready( function () {
+   		 $('#tablelol').DataTable({
+				language:{
+    			"sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+                "buttons": {
+                    "copy": "Copiar",
+                    "colvis": "Visibilidad"
+				}
+			}
+		});
+	} );
+	</script>
+	<br>
 </body>
 </html>
