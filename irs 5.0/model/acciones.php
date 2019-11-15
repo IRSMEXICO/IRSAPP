@@ -330,8 +330,8 @@ public function cliente_cons($id_cliente){
     return $this->lista;
     }
 
-    public function cat_mod_cliente($id,$ruta_img,$cliente){
-        $cat_cliente=$this->db->query(" UPDATE cat_cliente SET cliente='$cliente', foto='$ruta_img' where id_cliente= '$id'");
+    public function cat_mod_cliente($id,$nombre,$foto){
+        $cat_cliente=$this->db->query(" UPDATE cat_cliente SET cliente='$nombre', foto='$foto' where id_cliente= '$id'");
        echo'<script type="text/javascript">
        alert("Cliente agregado exitosamente");
        window.location.href="../views/clientes/index_cliente.php";
@@ -362,7 +362,6 @@ public function cat_add_cliente($ruta_img,$cliente){
     window.location.href="../views/clientes/index_cliente.php";
     </script>';
 }
-
 
 //------------------------CLIENTES------------------------//
 public function cat_cliente_area(){
@@ -439,8 +438,8 @@ public function cat_del_cliente_pieza($id){
     </script>';
 }
 
-public function cat_mod_cliente_pieza($cliente,$id_pieza,$piezas,$ruta_img){
-    $mod=$this->db->query("UPDATE cat_cliente_pieza SET id_cliente='$cliente', piezas='$piezas', foto='$ruta_img' WHERE id_pieza='$id_pieza'");
+public function cat_mod_cliente_pieza($id_cliente,$id_pieza,$piezas,$foto_actual){
+    $mod=$this->db->query("UPDATE cat_cliente_pieza SET id_cliente='$id_cliente', piezas='$piezas', foto='$foto_actual' WHERE id_pieza='$id_pieza'");
     echo'<script type="text/javascript">
     alert("Pieza modificada exitosamente");
     window.location.href="../views/clientes/index_cliente_piezas.php";
@@ -524,7 +523,64 @@ public function cat_mod_rol($tipo_rol,$id_rol){
     </script>';
 }   
 
+//-----------------------Registro de Avances---------------//
+public function GetRegistroAvance(){
+    $registro_avance=$this->db->query("SELECT * FROM registro_avance");
+    while($filas=$registro_avance->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+    
+}
 
+public function GetOrdenesDeServicio(){
+    $orden_servicio=$this->db->query("SELECT * FROM orden_servicio");
+    while($filas=$orden_servicio->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+    
+}
+
+public function GetUsuariosDelCliente($cliente){
+    $usuario_cliente=$this->db->query("SELECT id_usuario FROM orden_servicio WHERE id_cliente = '$cliente'");
+    while($filas=$usuario_cliente->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;   
+}
+
+public function GetParteDelUsuario($usuario_cliente){
+    $usuario_parte=$this->db->query("SELECT id_pieza FROM orden_servicio WHERE id_usuario = '$usuario_cliente'");
+    while($filas=$usuario_parte->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetActividad($numero_parte,$usuario){
+    $actividad=$this->db->query("SELECT actividades FROM orden_servicio WHERE id_pieza = '$numero_parte' AND id_usuario ='$usuario'");
+    while($filas=$actividad->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetArea($numero_parte2,$usuario2){
+    $area=$this->db->query("SELECT id_area FROM orden_servicio WHERE id_pieza = '$numero_parte2' AND id_usuario = '$usuario2' ");
+    while($filas=$area->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetImagen($numero_parte3){
+    $area=$this->db->query("SELECT foto FROM cat_cliente_pieza WHERE id_pieza = '$numero_parte3'");
+    while($filas=$area->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
 
 }
 ?>
