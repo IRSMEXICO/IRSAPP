@@ -235,7 +235,7 @@ if(isset($_POST['save_piezas'])){
     //--------------CLIENTE USUARIO---------------------//
     if(isset($_POST['add_cliente_usuario'])){
         $usuario=$_POST['usuario'];
-        $id_cliente=$_POST['cliente'];
+        $id_cliente=$_POST['id_cliente'];
         $email=$_POST['email'];
         $cuenta=$_POST['cuenta'];
         $contra=$_POST['contra'];
@@ -246,7 +246,7 @@ if(isset($_POST['save_piezas'])){
     if(isset($_POST['save_usuario_cliente'])){
         $id=$_POST['id'];
         $usuario=$_POST['usuario'];
-        $id_cliente=$_POST['cliente'];
+        $id_cliente=$_POST['id_cliente'];
         $email=$_POST['email'];
         $cuenta=$_POST['cuenta'];
         $contra=$_POST['contra'];

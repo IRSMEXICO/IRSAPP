@@ -48,13 +48,23 @@ public function cliente_area($id){
     }
     return $this->lista;
 }
-public function actividades($id){
-    $consulta=$this->db->query("SELECT * FROM cat_actividades  WHERE codigo='$id'");
+public function actividades(){
+    $consulta=$this->db->query("SELECT * FROM cat_actividades ");
     while($filas=$consulta->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista;
 }
+
+public function Colaboradores(){
+    $consulta=$this->db->query("SELECT tipo_usuario from cat_colaboradores where id_rol = '9'");
+    while($filas=$consulta->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
+
+
 public function contrato(){
     $consulta=$this->db->query("SELECT * FROM cat_contrato ");
     while($filas=$consulta->fetch_array()){
@@ -135,6 +145,30 @@ public function detalle_orden($id_orden){
     }
     return $this->lista;
 }
+
+public function orden_ins(){
+    $consulta=$this->db->query(" SELECT clie.cliente ,clie.foto, ord.id_orden, ord.id_usuario,ccu.usuario, ord.jornadas, ord.dias, ord.gpo_turno
+    FROM cat_cliente clie,
+    orden_servicio ord,
+    cat_cliente_usuario  Ccu
+    where clie.id_cliente = ord.id_cliente
+    AND ord.id_usuario = Ccu.id;
+    ");
+    while($filas=$consulta->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
+
+
+public function GetOrdenDelCliente($cliente){
+    $orden_cliente=$this->db->query("SELECT id_orden FROM orden_servicio WHERE id_cliente = '$cliente'");
+    while($filas=$orden_cliente->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
+
 
 }
     ?>

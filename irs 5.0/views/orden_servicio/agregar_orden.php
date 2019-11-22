@@ -10,11 +10,11 @@ $co3= new consul();
 $co4= new consul();
 $co5= new consul();
 $co6= new consul();
+$co7= new consul(); 
 $clientes= $col->clientes_id($id);
 $usuarios= $co->usuarios_cliente($id);
 $area=$co1->cliente_area($id);
 $piezas=$co3->cliente_pieza($id);
-$actividades=$co4->actividades($id);
 ?>
 <!DOCTYPE html>
 
@@ -41,7 +41,7 @@ $actividades=$co4->actividades($id);
         
         <style>
     .content {
-      margin-top: 135px;
+      margin-top: 80px;
     }
 
   .hidetext { -webkit-text-security: disc; /* Default */ }
@@ -54,22 +54,67 @@ $actividades=$co4->actividades($id);
 	</nav>
 	<div class="container">
 		<div class="content">
-			<h2>Datos del Catalogo de Areas &raquo; Agregar datos</h2>
+    <h2>&raquo;En Construccion (Editando) &raquo; </h2>
+			<h2>Orden de Servicio &raquo; Agregar datos</h2>
 			<hr />
 			<form class="form-horizontal" action="../../controller/orden_servicio.php" method="post">
-            <table class="table table-bordered">
-            <tr>
-            <td>
-            <label>id_cliente</label><input style="width:10%;text-align: center;" name="id_cliente" readonly value="<?php echo $id?>"><br>
-            <label>Usuario: </label>
-            <select name="usuarios">
-            <?php foreach($usuarios as $rowU){?>
-            <option value="<?php echo $rowU['id']; ?>"><?php echo $rowU['usuario']; ?></option>
+              <table class="table ">
+                <tr>
+                  <td>
+                     <?php foreach($clientes as $cli){?>
+                       <label><b>Cliente:  &nbsp;</b></label><input style="width:30%;text-align: center;" name="cliente" readonly value="<?php echo $cli ['cliente'];?>"><br>
+                     <?php } ?>
+                     </tr>
+                     <tr>
+                  <td>
+                <label><b>Usuario: </b></label>
+                   <select name="usuarios">
+                     <?php foreach($usuarios as $rowU){?>
+                      <option value="<?php echo $rowU['id']; ?>"><?php echo $rowU['usuario']; ?></option>
+                     <?php } ?>
+            </select>
+            <select name="correo_usuario">
+            <?php foreach($usuarios as $rowUs){?>
+            <option value="<?php echo $rowUs['email'] ?>"><?php echo $rowUs['email']  ?></option>
             <?php } ?>
+            </select>
+            </br>
+            <label><b>Supervisor IRS: </b></label> 
+            <select name="supervisor">
+                     <?php 
+                     $Colaboradores = $co7->Colaboradores();
+                     foreach($Colaboradores as $rowCo){?>
+                      <option value="<?php echo $rowCo['id_usuario']; ?>"><?php echo $rowCo['tipo_usuario']; ?></option>
+                     <?php } ?>
+            </select>
+            <select name="correo_irs">
+            <option value="DIANA@IRSMEXICO.COM">DIANA@IRSMEXICO.COM</option>
+            <option value="FELIPA@IRSMEXICO.COM">FELIPA@IRSMEXICO.COM</option>
+            </select>
+            </br>
+            </td>
+            </tr>
+            <br>
+            <tr> 
+            <td>
+            <label><b>Fecha Inicio:&nbsp; </b></label><input type="date" id="start" name="fecha_inicio" value="2019-10-19" min="2018-01-01" max="2048-12-31">
+            </td>
+            <td>
+            <label><b>Area de Trabajo:</b></label>
+            <select name="area_trabajo">
+            <?php foreach($area as $rowA){?>
+            <option value="<?php echo $rowA['id_area']; ?>"><?php echo $rowA['id_area']."-".$rowA['area'];?></option>
+                <?php } ?>
+            </td>
+            <td>
+            <label><b>Trazabilidad: &nbsp;</b></label>
+            <select name="trazabilidad">
+            <option values="si">SI</option>
+            <option value="no">NO</option>
             </select>
             </td>
             <td>
-            <label>Jordnada en Horas:</label>
+            <label><b>Jornada en Horas:</b></label>
             <select name="jornadas_horas">
             <option value="8">8 horas</option>
             <option value="10">10 horas</option>
@@ -78,126 +123,43 @@ $actividades=$co4->actividades($id);
             </select>
             </td>
             <td>
-            <label>Actividad a realizar: &nbsp;</label>
-            <select name="actividades">
-            <?php foreach($actividades as $act){?>
-            <option value="<?php echo $act['id_codigo']; ?>"><?php echo $act['tipo_actividad']; ?></option>
-            <?php } ?>
-            </select>
-            </td>
-            </tr> 
-            <tr> 
-            <td><label>Fecha Inicio: </label><input type="date" id="start" name="fecha_inicio"
-            value="2019-10-19"
-            min="2018-01-01" max="2048-12-31">
-            </td>
-            <td>
-            <label>TOAT: &nbsp;</label><input type="text" name="toat" required>
-            </td>
-            <td>
-            <label>Serv. Contratado: &nbsp;</label>
-            <select name="contrato">
-            <?php
-            $contrato=$co5->contrato();
-            foreach($contrato as $cont){ ?>
-            <option value="<?php echo $cont['id_contrato'];?>"><?php echo $cont['tipo_contrato'];?>  </option>
-            <?php } ?>
-            </select>
-            </td>
-            </tr>
-            <tr>
-            <td>
-            <label>No. de Parte</label>
-            <select name="num_parte">
-            <?php foreach($piezas as $rowP){?>
-            <option value="<?php echo $rowP['id_pieza']?>"><?php echo $rowP['id_pieza']."-".$rowP['piezas']?></option>
-            <?php } ?> 
-            </select>
-            </td>
-            <td>
-            <label>Acomodo Turno: &nbsp;</label>
-            <select name="acomodo_turno">
-            <option value="DIA">Dia 10 personas</option>
-            <option value="TARDE">N/A</option>
-            <option value="NOCHE">Noche 10 personas</option>
-            </select>
-            </td>
-            <td>
-            <label>Seleciona Empleado: &nbsp;</label>
-            <select name="id_empleado">
-            <?php $empleado=$co6->empleados($id);
-            foreach($empleado as $emp){?>
-            <option value="<?php echo $emp['id_empleado'] ?>"><?php echo $emp['num_empleado']."-".$emp['nom_empleado'] ?></option>
-            <?php } ?>
-            </select>
-            </td>
-            </tr>
-            <tr>
-            <td>
-            <label>Area de Trabajo</label>
-            <select name="area_trabajo">
-            <?php foreach($area as $rowA){?>
-            <option value="<?php echo $rowA['id_area']; ?>"><?php echo $rowA['id_area']."-".$rowA['area'];?></option>
-                <?php } ?>
-            </td>
-            <td>
-            <label>Horarios PACTD: &nbsp;</label>
-            <select name="horario_pactd">
-            <option value="">Inicio Jor. - Fin Jor.</option>
-            <option value="DIA">6:00am - 6:00pm</option>
-            <option value="TARDE">N/A - N/A</option>
-            <option value="NOCHE">6:00pm - 6:00am</option>
-            </select>
-            </td>
-            <td>
-            <label>Precio CLNT: &nbsp</label>
-            <input name="precio_clnt" type="text">
-            </td>
-            </tr>
-            <tr>
-            <td>
-            <label>Correo Usuario: &nbsp;</label>
-            <select name="correo_usuario">
-            <?php foreach($usuarios as $rowUs){?>
-            <option value="<?php echo $rowUs['email'] ?>"><?php echo $rowUs['email']  ?></option>
-            <?php } ?>
-            </select>
-            </td>
-            <td>
-            <label>Captura de Reporte: &nbsp: &nbsp;</label>
+            <label><b>Captura de Reporte: &nbsp;</b></label>
             <select name="captura_reporte">
             <option value="HORA">HORA</option>
             <option value="TURNO">TURNO</option>
             </select>
             </td>
+            </tr> 
+            <tr> 
             <td>
-            <label>Sueldo Por Hora</label>
-            <input name="sueldo_hora" type="text">
+            <label><b>Total de personas: &nbsp;</b></label>
+            <br><input style="width:30%;text-align: center;"type="number" name="totalpersonas" disabled=»disabled» />
             </td>
-            </tr>
+            <td>
+            <label><b>Turno: &nbsp;</b></label>
+            <br><label>Dia:    &nbsp;</label>
+            <br><label>Tarde:  &nbsp;</label>
+            <br><label>Noche:  &nbsp;</label>
+            </td>
+            <td>
+            <label><b>Acomodo Personas:</b></label>
+            <br><input style="width:30%;text-align: center;"type="number" name="dia" required>
+            <br><input style="width:30%;text-align: center;" type="number" name="tarde" required>
+            <br><input style="width:30%;text-align: center;"type="number" name="noche" required>
+            </td>
+            <td><label><b>Inicio Jornadas: &nbsp;</b></label>
+            <br><input style="width:50%;text-align: center;"type="time" name="dia" >
+            <br><input style="width:50%;text-align: center;" type="time" name="tarde" >
+            <br><input style="width:50%;text-align: center;"type="time" name="noche" >
+            </td>
+            <td><label><b>Fin Jornadas: &nbsp;</b></label>
+            <br><input style="width:50%;text-align: center;"type="time" name="dia" >
+            <br><input style="width:50%;text-align: center;" type="time" name="tarde" >
+            <br><input style="width:50%;text-align: center;"type="time" name="noche" >
+            </td>
             <tr>
             <td>
-            <label>Correo IRS: &nbsp;</label>
-            <select name="correo_irs">
-            <option value="DIANA@IRSMEXICO.COM">DIANA@IRSMEXICO.COM</option>
-            <option value="FELIPA@IRSMEXICO.COM">FELIPA@IRSMEXICO.COM</option>
-            </select>
-            </td>
-            <td>
-            <label>Trazabilidad: &nbsp;</label>
-            <select name="trazabilidad">
-            <option values="si">SI</option>
-            <option value="no">NO</option>
-            </select>
-            </td>
-            <td>
-            <label>Comentario</label>
-            <textarea name="comentario" placeholder="Escribe un comentario.."></textarea>
-            </td>
-            </tr>
-            <tr>
-            <td>
-            <label>Dias Laborales : &nbsp;</label><br>  
+            <label><b>Dias Laborales : &nbsp;</b></label><br>  
             <input type="checkbox" name="Days[]" value="lunes">Lunes<br>
             <input type="checkbox" name="Days[]" value="martes">Martes<br>
             <input type="checkbox" name="Days[]" value="miercoles">Miercoles<br>
@@ -207,31 +169,21 @@ $actividades=$co4->actividades($id);
             <input type="checkbox" name="Days[]" value="domingo">Domingo<br>
             </td>
             <td>
-            <label>Selecciona Grupo o turno: &nbsp;</label><br>  
-            <input type="checkbox" name="gpo_turno[]" value="1d1"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d2"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d3"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d4"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d5"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d6"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d7"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d8"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d9"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d10"> 1 - Dia - 6:00am a 6:00pm<br>
-            </td>  
-            <td>
-            <label>Selecciona Grupo o turno: &nbsp;</label><br>  
-            <input type="checkbox" name="gpo_turno[]" value="1d11"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1d12"> 1 - Dia - 6:00am a 6:00pm<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n13"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n14"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n15"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n16"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n17"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n18"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n19"> 3 - Noche - 6:00pm a 6:00am<br>
-            <input type="checkbox" name="gpo_turno[]" value="1n20"> 3 - Noche - 6:00pm a 6:00am<br>
-            </td>             
+            <label><b>Serv. Contratado: &nbsp;</b></label>
+            <select name="contrato">
+            <?php
+            $contrato=$co5->contrato();
+            foreach($contrato as $cont){ ?>
+            <option value="<?php echo $cont['id_contrato'];?>"><?php echo $cont['tipo_contrato'];?>  </option>
+            <?php } ?>
+            </select>
+            </td>
+            <tr>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+            </tr>
             </tr>
             <div class="form-group">
 			<label class="col-sm-3 control-label">&nbsp;</label>
@@ -248,6 +200,7 @@ $actividades=$co4->actividades($id);
             </div>
 			</div>
                 </tr>
+            
                 </table>
 			</form>
 			

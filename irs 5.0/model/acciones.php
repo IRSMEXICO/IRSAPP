@@ -251,6 +251,7 @@ public function cat_del_rate($id){
     window.history.go(-1);
     </script>';
 }
+
 public function cat_del_registro($id){
 
     $cat_registro=$this->db->query("DELETE FROM cat_registro WHERE id_registro='$id'");

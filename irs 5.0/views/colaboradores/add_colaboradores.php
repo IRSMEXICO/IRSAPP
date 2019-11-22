@@ -76,20 +76,20 @@ $rol = $rol_info->rol();
 				<div class="form-group">
 					<label class="col-sm-3 control-label">E-Mail</label>
 					<div class="col-sm-4">
-						<input type="email" name="email" class="form-control" placeholder="Ej.: usuario@servidor.com" required>
+						<input type="email" name="email" class="form-control" placeholder="Ej.: usuario@servidor.com" >
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Cuenta</label>
 					<div class="col-sm-4">
-						<input type="text" name="cuenta" class="form-control" placeholder="Cuenta" required>
+						<input type="text" name="cuenta" class="form-control" placeholder="Cuenta">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Contraseña</label>
 					<div class="col-sm-4" id="show_hide_password" >
            			 <div class="input-group">
-            			<input id="txtPassword" type="password" name="contra" class="form-control" placeholder="Contraseña" required>
+            			<input id="txtPassword" type="password" name="contra" class="form-control" placeholder="Contraseña" >
             		<div class="input-group-append">
             			<button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
           			</div>
