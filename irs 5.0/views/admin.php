@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--SLIDER-->
         <link rel="stylesheet" href="../content/css/nivo-slider.css">
-	      <link rel="stylesheet" href="<../content/css/mi-slider.css">
+	      <link rel="stylesheet" href="../content/css/mi-slider.css">
 	      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
   	    <script src="../content/js/jquery.nivo.slider.js"></script>
 	      <script type="text/javascript"> 
