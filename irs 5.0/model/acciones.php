@@ -11,13 +11,21 @@ include 'conexion.php';
         $this->lista=array();
     }
     public function login($usuario,$contrasena){
-        $consulta=$this->db->query("SELECT * FROM usuarios WHERE usuario='$usuario' AND contrasena='$contrasena'");
+        $consulta=$this->db->query("SELECT * FROM cat_colaboradores a, cat_rol b WHERE cuenta='$usuario' AND contra='$contrasena' 
+        AND a.id_rol = b.id_rol");
     while($filas=$consulta->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista;
 }
 
+public function login2($usuario,$contrasena){
+    $consulta=$this->db->query("SELECT * FROM cat_cliente_usuario WHERE cuenta='$usuario' AND contra='$contrasena'");
+while($filas=$consulta->fetch_assoc()){
+    $this->lista[]=$filas;
+}
+return $this->lista;
+}
     public function ext_actividad($act){
         $tipo_actividad = $this->db->query("INSERT INTO cat_actividades (tipo_actividad) values ('$act')");
         echo'<script type="text/javascript">
