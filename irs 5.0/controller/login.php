@@ -15,7 +15,16 @@ include ("../model/acciones.php");
     $iniciar=$rob->login($us,$cont);
     
 foreach ($iniciar as $row){
-    $rol = $row['rol'];
+    $rol = $row['tipo_rol'];
+}
+
+if(sizeof($iniciar)==0){
+ 
+    $rob=new consul();
+    $iniciar=$rob->login2($us,$cont);
+    
+
+    $rol = "Usuario";
 }
 
 if(sizeof($iniciar)>0){
@@ -23,29 +32,35 @@ if(sizeof($iniciar)>0){
     $_SESSION['usuario'] = $us;
     $_SESSION['start'] = time();
     $_SESSION['expire'] = $_SESSION['start'] + (600);//tiempo de 600segundos por sesion
-    if($rol == "1"){
+    if($rol == "Director"){
         $_SESSION['rol'] = $rol;
         header("location: ../views/admin.php");
     }
-    else if($rol == "2"){
+    else if($rol == "Gerente"){
         $_SESSION['rol'] = $rol;
         header("location: ../views/admin.php");
     }
-    else if($rol == "3"){
+    else if($rol == "Supervisor"){
         $_SESSION['rol'] = $rol;
         header("location: ../views/admin.php");
     }
-    else if($rol == "4"){
+    else if($rol == "Team Leader"){
         $_SESSION['rol'] = $rol;
         header("location: ../views/admin.php");
     }
-    else if($rol == "5"){
+    else if($rol == "Usuario"){
         $_SESSION['rol'] = $rol;
         header("location: ../views/usuario.php");
     }
-    else if($rol == "6"){
+    else if($rol == "Operador"){
         $_SESSION['rol'] = $rol;
         header("location: ../views/inspector.php");
+    }
+    else{
+        echo'<script type="text/javascript">
+        alert("Rol no existe, dar de alta");
+        window.location.href="../";
+        </script>'    ;
     }
 }
 else{
@@ -54,4 +69,6 @@ else{
     window.location.href="../";
     </script>';
 }
+
+
 ?>
