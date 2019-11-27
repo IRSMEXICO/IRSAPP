@@ -39,64 +39,23 @@
     
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <!--Clientes
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Clientes <span class="sr-only">(current)</span></a>
-          </li>-->
-          <!--**Clientes**-->
-
-          <!--COLABORADORES-->
-          <!--<li class="nav-item active">
-            <a class="nav-link" href="#">Colaboradores</a>
-          </li>-->
-          <!--**COLABORADORES**-->
-
-           <!--ORDEN SERVICIO-->
-           <!--<li class="nav-item active">
-            <a class="nav-link" href="#">Orden de Servicio</a>
-          </li>-->
-          <!--**ORDEN SERVICIO**-->
           
            <!--REGISTRO AVANCES-->
            <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Registro de avances
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="registro_avance/admin.php">Admin</a>
-          <a class="dropdown-item" href="registro_avance/inspector.php">Inspector</a>
-          <a class="dropdown-item" href="registro_avance/reg_avance1.php">Registro de Avances 1</a>
-          <a class="dropdown-item" href="registro_avance/reg_avance2.php">Registro de Avances 2</a>
+       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="registro_avance/reg_avance_1.php">Registro de Avances 1</a>
+          <a class="dropdown-item" href="registro_avance/reg_avance_2.php">Registro de Avances 2</a>
+          <a class="dropdown-item" href="registro_avance/reg_avance_3.php">Registro de Avances 3</a>
+          <a class="dropdown-item" href="registro_avance/reg_avance_4.php">Registro de Avances 4</a>
         </div>
          </li>
           <li  class="nav-item active">
             <a style=" float: right;" class="nav-link" href="../model/cerrar.php">Cerrar Sesión</a>
           </li>
           <!--**REGISTRO AVANCES**-->
-
-            <!--REPORTES-->
-            <!--<li class="nav-item active">
-            <a class="nav-link" href="#">Reportes</a>
-          </li>-->
-          <!--**REPORTES**-->
-
-          <!--CATALOGOS
-          <li class="nav-item active dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Catalogos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="cat_act/cat_contratos.php">Contratos</a>
-          <a class="dropdown-item" href="cat_act/cat_actividades.php">Actividades</a>
-          <a class="dropdown-item" href="cat_act/cat_rate.php">Rates</a>
-          <a class="dropdown-item" href="cat_act/cat_turno.php">Turnos</a>
-          <a class="dropdown-item" href="cat_act/cat_moneda.php">Monedas</a>
-          <a class="dropdown-item" href="cat_act/cat_captura.php">Tipo Captura</a>
-          <a class="dropdown-item" href="cat_act/cat_reg.php">Tipo de Registro</a>
-          <a class="dropdown-item" href="cat_act/cat_motivo_tm.php">Motivos TM</a>
-        </div>
-      </li>-->
-      <!--**CATALOGOS**-->
         </ul>
       </div>
     </nav>
