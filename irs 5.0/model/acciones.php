@@ -532,64 +532,97 @@ public function cat_mod_rol($tipo_rol,$id_rol){
     </script>';
 }   
 
-//-----------------------Registro de Avances---------------//
-public function GetRegistroAvance(){
-    $registro_avance=$this->db->query("SELECT * FROM registro_avance");
-    while($filas=$registro_avance->fetch_assoc()){
-        $this->lista[]=$filas;
-    }
-    return $this->lista;
-    
-}
 
-public function GetOrdenesDeServicio(){
-    $orden_servicio=$this->db->query("SELECT * FROM orden_servicio");
-    while($filas=$orden_servicio->fetch_assoc()){
-        $this->lista[]=$filas;
-    }
-    return $this->lista;
-    
-}
+//REGISTROS DE AVANCES//
 
-public function GetUsuariosDelCliente($cliente){
-    $usuario_cliente=$this->db->query("SELECT id_usuario FROM orden_servicio WHERE id_cliente = '$cliente'");
-    while($filas=$usuario_cliente->fetch_assoc()){
-        $this->lista[]=$filas;
-    }
-    return $this->lista;   
-}
-
-public function GetParteDelUsuario($usuario_cliente){
-    $usuario_parte=$this->db->query("SELECT id_pieza FROM orden_servicio WHERE id_usuario = '$usuario_cliente'");
-    while($filas=$usuario_parte->fetch_assoc()){
+public function GetClientes(){
+    $clientes=$this->db->query("SELECT cliente,foto FROM cat_cliente");
+    while($filas=$clientes->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista; 
 }
 
-public function GetActividad($numero_parte,$usuario){
-    $actividad=$this->db->query("SELECT actividades FROM orden_servicio WHERE id_pieza = '$numero_parte' AND id_usuario ='$usuario'");
+public function GetUsuariosClientes($cliente){
+    $usuarios_cliente=$this->db->query("SELECT * FROM orden_servicio WHERE id_cliente = '$cliente' ");
+    while($filas=$usuarios_cliente->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetCorreo($cliente,$usuario){
+    $correo_usuario=$this->db->query("SELECT correo_usuario FROM orden_servicio WHERE id_cliente = '$cliente' AND id_usuario = '$usuario' ");
+    while($filas=$correo_usuario->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetFolio($cliente2,$usuario_cliente){
+    $folio=$this->db->query("SELECT folio FROM orden_servicio WHERE id_cliente = '$cliente2' AND id_usuario = '$usuario_cliente' ");
+    while($filas=$folio->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetNumeroDeParte($folio){
+    $parte=$this->db->query("SELECT id_pieza FROM orden_servicio WHERE folio = '$folio' ");
+    while($filas=$parte->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetInstructivo($folio3){
+    $instructivo=$this->db->query("SELECT instructivo FROM orden_servicio WHERE folio = '$folio3' ");
+    while($filas=$instructivo->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetActividad($folio4){
+    $actividad=$this->db->query("SELECT actividades FROM orden_servicio WHERE folio = '$folio4' ");
     while($filas=$actividad->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista; 
 }
 
-public function GetArea($numero_parte2,$usuario2){
-    $area=$this->db->query("SELECT id_area FROM orden_servicio WHERE id_pieza = '$numero_parte2' AND id_usuario = '$usuario2' ");
-    while($filas=$area->fetch_assoc()){
+public function GetParteImg($parte){
+    $parte_img=$this->db->query("SELECT foto FROM cat_cliente_pieza WHERE id_pieza = '$parte' ");
+    while($filas=$parte_img->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista; 
 }
 
-public function GetImagen($numero_parte3){
-    $area=$this->db->query("SELECT foto FROM cat_cliente_pieza WHERE id_pieza = '$numero_parte3'");
-    while($filas=$area->fetch_assoc()){
+public function GetColaboradores($folio){
+    $colaboradores=$this->db->query("SELECT id_empleado FROM orden_servicio WHERE folio = '$folio' ");
+    while($filas=$colaboradores->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista; 
 }
 
+public function LogueoColaborador($colaborador,$contra){
+    $logueo=$this->db->query("SELECT * FROM cat_colaboradores WHERE cuenta = '$colaborador' AND contra = '$contra' ");
+    while($filas=$logueo->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetColaboradoresByFolio($folio2){
+    $colaboradores=$this->db->query("SELECT * FROM orden_servicio WHERE folio = '$folio2' ");
+    while($filas=$colaboradores->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+//REGISTROS DE AVANCES//
 }
 ?>
