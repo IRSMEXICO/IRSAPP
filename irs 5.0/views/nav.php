@@ -64,10 +64,10 @@
         Registro de avances
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="registro_avance/admin.php">Admin</a>
-          <a class="dropdown-item" href="registro_avance/inspector.php">Inspector</a>
-          <a class="dropdown-item" href="registro_avance/reg_avance1.php">Registro de Avances 1</a>
-          <a class="dropdown-item" href="registro_avance/reg_avance2.php">Registro de Avances 2</a>     
+          <a class="dropdown-item" href="registro_avance/reg_avance_1.php">Registro de Avances 1</a>
+          <a class="dropdown-item" href="registro_avance/reg_avance_2.php">Registro de Avances 2</a>
+          <a class="dropdown-item" href="registro_avance/reg_avance_3.php">Registro de Avances 3</a>
+          <a class="dropdown-item" href="registro_avance/reg_avance_4.php">Registro de Avances 4</a>
         </div>
          </li>
           <!--**REGISTRO AVANCES**-->
