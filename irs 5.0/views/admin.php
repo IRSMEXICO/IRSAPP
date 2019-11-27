@@ -130,9 +130,9 @@
     <!--SLIDER-->   
     <div class="slider-wrapper theme-mi-slider">
         <div id="slider" class="nivoSlider">     
-            <img src="../content/img/1.jpg"  title="#htmlcaption1" width="500px" height="500px"/>    
-            <img src="../content/img/2.jpg"  title="#htmlcaption2" width="500px" height="500px"/>    
-            <img src="../content/img/3.jpg"  title="#htmlcaption3" width="500px" height="500px"/>     
+            <img src="../content/img/1.jpg"  title="#htmlcaption1"/>    
+            <img src="../content/img/2.jpg"  title="#htmlcaption2"/>    
+            <img src="../content/img/3.jpg"  title="#htmlcaption3"/>     
         </div>        
       </div>
       <!--**SLIDER**-->
