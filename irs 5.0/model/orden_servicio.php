@@ -57,13 +57,12 @@ public function actividades(){
 }
 
 public function Colaboradores(){
-    $consulta=$this->db->query("SELECT tipo_usuario from cat_colaboradores where id_rol = '9'");
+    $consulta=$this->db->query("SELECT * from cat_colaboradores where id_rol = '9'");
     while($filas=$consulta->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista;
 }
-
 
 public function contrato(){
     $consulta=$this->db->query("SELECT * FROM cat_contrato ");
@@ -169,6 +168,29 @@ public function GetOrdenDelCliente($cliente){
     return $this->lista;
 }
 
+public function GetCorreoDelUsuario($usuario){
+    $usuario_correo=$this->db->query("SELECT email from cat_cliente_usuario where id = '$usuario'");
+    while($filas=$usuario_correo->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
+
+public function GetCorreoDelSuperv($supervisor){
+    $usuario_correo=$this->db->query("SELECT email from cat_colaboradores where Id_usuario = '$supervisor'");
+    while($filas=$usuario_correo->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
+
+public function GetImagenDePieza($pieza){
+    $usuario_correo=$this->db->query("SELECT foto from cat_cliente_pieza where id_pieza = '$pieza'");
+    while($filas=$usuario_correo->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
 
 }
     ?>

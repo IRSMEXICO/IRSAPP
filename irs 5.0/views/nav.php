@@ -54,7 +54,8 @@
           
                  <!--OS INSPECTORES-->
                  <li class="nav-item active">
-                 <a class="nav-link" href="#">OS Inspectores</a>
+                 <a class="nav-link" href="../os_inspectores/os_inspectores.php">OS Inspectores</a>
+                 
                </li>
               <!--**OS INSPECTORES**-->
 

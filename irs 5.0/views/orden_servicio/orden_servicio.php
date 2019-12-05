@@ -28,7 +28,7 @@ $colaboradores = $col->clientes();
         
         <style>
     .content {
-      margin-top: 135px;
+      margin-top: 80px;
     }
 			
 	.img_piezas img{

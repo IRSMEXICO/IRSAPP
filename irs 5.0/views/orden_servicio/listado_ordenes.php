@@ -18,10 +18,11 @@ $ordenes = $col->ordenes($id);
         <!--**BOOTSTRAP**-->
         <!--*BUSQUEDA EN TABLAS**-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.2.1/jquery.quicksearch.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="../../content/js/busqueda.js"></script>
         <!--**FIN BUSQUEDA EN TABLAS**-->		
-        <link href="../../content/css/style_nav.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+		 <link href="../../content/css/style_nav.css" rel="stylesheet">
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -30,7 +31,7 @@ $ordenes = $col->ordenes($id);
         
         <style>
     .content {
-      margin-top: 135px;
+      margin-top: 80px;
     }
 
   .hidetext { -webkit-text-security: disc; /* Default */ }
@@ -43,27 +44,25 @@ $ordenes = $col->ordenes($id);
 	</nav>
 	<div class="container">
 		<div class="content">
-			<h2>Orden de servicio</h2>
+			<h2>Listado de Ordenes de servicio</h2>
 			<hr />	
 			<br />
 			<br />
-			<form style="float: right;" action= "add_colaboradores.php">
-			<input type="text" class="form-control pull-right"  id="search" placeholder="Buscar">
-			</form>
+			
 			<br />
 			<br />
 			<div class="row">
 			
 			<div class="table-responsive">
-			<table id="mytable" class="table table-hover">
+			<table id="list_table" class="table table-hover">
 				<thead class="thead-light">
 				<tr>
 				
-					<th>ID orden</th>
+					<th>Folio de Orden</th>
 					<th>Usuario</th>
-                    <th>fecha inicio</th>
-					<th>jornadas</th>
-					<th>Actividaes</th>
+                    <th>Fecha inicio</th>
+					<th>Jornadas</th>
+					<th>Actividades</th>
 					<th>Acciones</th>
 					
 				   </tr>
@@ -81,8 +80,8 @@ foreach ($ordenes as $cols) {
 							<td><?php echo $cols['jornadas']." hrs"?></td>
 							<td><?php echo $cols['tipo_actividad']?></td>
 							<td>
-								<a href="detalle_orden.php?nik=<?php echo $cols['id_orden']?>" title="Ver detalle de Orden" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span>Ver detalles</a>
-								<a href="mostrar_orden.php?nik=<?php echo $cols['id_orden']?>" title="Modificar Orden" class="btn btn-info btn-sm "> <span class="fa fa-refresh fa-spin"></span>modificar orden</a>
+								<a href="detalle_orden.php?nik=<?php echo $cols['id_orden']?>" title="Ver detalle de Orden" class="btn btn-success "> <span class="fas fa-info"></span> Ver detalles</a>
+								<a href="mostrar_orden.php?nik=<?php echo $cols['id_orden']?>" title="Modificar Orden" class="btn btn-info "> <span class="fa fa-refresh fa-spin"></span> Editar Orden</a>
 							</td>
 							</tr>
 							<?php }	?>
@@ -95,5 +94,40 @@ foreach ($ordenes as $cols) {
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+	$(document).ready( function () {
+   		 $('#list_table').DataTable({
+				language:{
+    			"sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+                "buttons": {
+                    "copy": "Copiar",
+                    "colvis": "Visibilidad"
+				}
+			}
+		});
+	} );
+	</script>
 </body>
 </html>
