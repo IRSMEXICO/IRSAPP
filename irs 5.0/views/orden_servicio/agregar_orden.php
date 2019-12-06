@@ -17,6 +17,7 @@ $area=$co1->cliente_area($id);
 $piezas=$co3->cliente_pieza($id);
 $col= new consul();
 $colaboradores = $col->clientes();
+$captura = $co2->captura();
 
 ?>
 <!DOCTYPE html>
@@ -65,16 +66,21 @@ $colaboradores = $col->clientes();
 		<div class="content">
     <h2>&raquo;En Construccion (Editando) &raquo; </h2>
 			<h2>Orden de Servicio &raquo; Agregar datos</h2>
-			<hr />
-			<form class="form-horizontal" action="../../controller/orden_servicio.php" method="post">
+			<hr /> <td>
+                <form  style="float: right;"  method="POST" autocomplete="off">
+                <label><b>Folio:</b></label>
+                 <br><input style="width:100%;text-align: center;"type="text" id="folio" >
+               </form>
+                </td>
+			        <form class="form-horizontal" action="../../controller/orden_servicio.php" method="post">
               <table class="table ">
                 <tr>
                   <td>
                      <?php foreach($clientes as $cli){?>
                        <label><b>Cliente:  &nbsp;</b></label><input style="width:30%;text-align: center;" name="cliente" readonly value="<?php echo $cli ['cliente'];?>"><br>
                      <?php } ?>
-                     </tr>
-                     <tr>
+                </tr>
+                <tr>
                   <td>
                 <label><b>Usuario: </b></label>
                    <select name="usuarios" id="usuarios">
@@ -83,8 +89,12 @@ $colaboradores = $col->clientes();
                       <option value="<?php echo $rowU['id']; ?>"><?php echo $rowU['usuario']; ?></option>
                      <?php } ?>
             </select>
-               <input class="form-control" type="text" name="correo_usuario" id="correo_usuario" readonly value="SIN CORREO ASIGNADO">
-            </br>
+            <td>
+               <input style="width:100%;text-align: center;" class="form-control" type="text" name="correo_usuario" id="correo_usuario" readonly value="SIN CORREO ASIGNADO">
+            </td>
+            </tr>
+            <tr>
+            <td>
             <label><b>Supervisor IRS: </b></label> 
             <select name="supervisor" id="supervisor">
             <option value="">SELECCIONAR SUPERVISOR:</option>
@@ -94,8 +104,12 @@ $colaboradores = $col->clientes();
                       <option value="<?php echo $rowCo['Id_usuario']; ?>"><?php echo $rowCo['tipo_usuario']; ?></option>
                      <?php } ?>
             </select>
+            </td>
+            <td>
                 <input class="form-control" type="text" name="correo_irs" id="correo_irs" readonly value="SIN CORREO ASIGNADO">
-            </br>
+            </td>
+            </tr>
+            
             </td>
             </tr>
             <br>
@@ -138,8 +152,16 @@ $colaboradores = $col->clientes();
             </tr> 
             <tr> 
             <td>
+            <label><b>Forma de captura </b></label>
+                   <select name="forma_captura" id="forma_captura">
+                     <?php foreach($captura as $rowCap){?>
+                      <option value="<?php echo $rowCap['id_captura']; ?>"><?php echo $rowCap['tipo_captura']; ?></option>
+                     <?php } ?>
+            </select>
+            </td>
+            <td>
             <label><b>Total de personas: &nbsp;</b></label>
-            <br><input style="width:30%;text-align: center;"type="number" id="totalGeneral" disabled=»disabled» />
+            <br><input style="width:30%;text-align: center;"type="number" id="totalGeneral"readonly value="00">
             </td>
             <td>
             <label><b>Turno: &nbsp;</b></label>
@@ -154,14 +176,14 @@ $colaboradores = $col->clientes();
             <br><input style="width:30%;text-align: center;"type="number" class="suma">
             </td>
             <td><label><b>Inicio Jornadas: &nbsp;</b></label>
-            <br><input style="width:100%;text-align: center;"type="time" id="time1"onchange="SumarTiempos()" >
+            <br><input style="width:100%;text-align: center;"type="time" id="dia"onchange="SumarTiempos()" >
             <br><input style="width:100%;text-align: center;" type="time" id="tarde" onchange="SumarTiempos()" >
-            <br><input style="width:100%;text-align: center;"type="time" id="time1"  onchange="SumarTiempos()">
+            <br><input style="width:100%;text-align: center;"type="time" id="noche"  onchange="SumarTiempos()">
             </td>
             <td><label><b>Fin Jornadas: &nbsp;</b></label>
-            <br><input style="width:100%;text-align: center;"  id="resultado" disabled >
-            <br><input style="width:100%;text-align: center;"  id="resultado2" disabled>
-            <br><input style="width:100%;text-align: center;"  id="resultado" disabled>
+            <br><input style="width:100%;text-align: center;"  id="resultado" readonly value="00:00" >
+            <br><input style="width:100%;text-align: center;"  id="resultado2" readonly value="00:00">
+            <br><input style="width:100%;text-align: center;"  id="resultado3" readonly value="00:00">
             </td>
             <tr>
             <td>
@@ -194,9 +216,16 @@ $colaboradores = $col->clientes();
             </td>
             </tr>
             </table>
-            <form class="form-inline my-2 my-lg-0" style="float: right;"  action="add_colaboradores.php" method="POST" autocomplete="off">
+            <tr>
+            <td>
+            </form>
+          <!--<form class="form-inline my-2 my-lg-0" style="float: right;"  action="os_productos.php" method="POST" autocomplete="off">
 			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar </button>
-			</form>
+			</form>-->
+      </br>
+      </td>
+      </tr>
+      </br>
             <div class="table-responsive">
 			<table id="mytable" class="table table-hover">
 				<thead class="thead">
@@ -207,28 +236,54 @@ $colaboradores = $col->clientes();
 					<th>Actividad a Realizar</th>
 					<th>Instructivo de Operación</th>
           <th>Imagen Piezas</th>
-          
+          <th>Accion</th>
 					
 				   </tr>
 				 </thead>
-         
-				 
-
-<!--<?php
-foreach ($colaboradores as $cols) { 
-	?>
-						<tr>
-							
-							<td><?php echo $cols['id_cliente']?></td>
-							<td><?php echo $cols['cliente']?></td>
-							<td class="img_piezas"><img src="<?php echo $cols['foto'];?>" alt="<?php echo $cols['cliente'];?>"></td>
+        
+					<tr>
 							<td>
-							<a href="../../controller/del_colaboradores.php?id=<?php echo $cols['Id_usuario']?>" title="Eliminar" onclick="return confirm('¿Esta seguro de borrar el Nombre de usuario <?php echo $cols['tipo_usuario']?>?');" class="btn btn-danger btn-sm"><span class="fas fa-trash-alt" ></span></a>
-								
-							</td>
-							</tr>
-							<?php }	?>
-			</table>-->
+                <select name="num_parte" id="num_parte">
+                 <option value="">SELECCIONAR PIEZA:</option>
+                   <?php foreach($piezas as $rowP){?>
+                <option value="<?php echo $rowP['id_pieza']?>"><?php echo $rowP['id_pieza']."-".$rowP['piezas']?></option>
+                    <?php } ?> 
+                </select>
+              </td>
+							<td><input style="width: 70%;" type="number" id="rate"></td>
+							<td> 
+                <select name="actividades">
+                  <?php $actividades=$co4->actividades();
+                  foreach($actividades as $act){?>
+                  <option value="<?php echo $act['id_codigo']; ?>"><?php echo $act['tipo_actividad']; ?></option>
+                  <?php } ?>
+                </select>
+              </td>
+							<td><input type="file" name="file" id="file"></td>
+              <td class="img_piezas" ><img src="" id="imagen_pieza"></td>
+              <td><a href="#" id="add_orden_piezas" class="link_add"><i class="fas fa-plus"></i>
+              Agregar</a> </td>
+					</tr>
+          <tr>
+            <th>Producto/ Numero de parte</th>
+            <th>Rate x Hora(piezas)</th>
+					  <th>Actividad a Realizar</th>
+					  <th>Instructivo de Operación</th>
+            <th>Imagen Piezas</th>
+            <th>Accion</th>
+          </tr>
+        <tbody id="detalle_orden">
+          <tr>
+              <td>123213</td>
+              <td>12</td>
+              <td>Limpieza de oxido</td>
+              <td>blabla</td>
+              <td>papu</td>
+              <td class="">
+                  <a class="link_delete" href="#" onclick="event.preventDefault(); 
+                     del_pieza_detalle(1);"><i class="far fa-trash-alt"></i></a>
+              </td>
+			</table>
       
       <table>
             <tr>
@@ -248,18 +303,18 @@ foreach ($colaboradores as $cols) {
             </br>
             </br>
             <hr />
-            <form class="form-group">
-		      	<label class="col-sm-3 control-label">&nbsp;</label>
-			      <div class="col-sm-6">
-            <td>	
-			      <input type="submit" name="add_orden" class="btn btn-info" value="Generar orden">
-            </td>
+            <!--<form class="form-inline my-2 my-lg-0" style="float: right;"  action="os_productos.php" method="POST" autocomplete="off">
+			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar </button>
+			</form>-->
+            
             
                 </tr>
             
                 </table>
 			</form>
 			
+      
+
 		</div>
 	</div>
             
@@ -319,24 +374,57 @@ foreach ($colaboradores as $cols) {
 });
     </script>
 
+     <!-- SCRIPT IMAGEN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var imagen = $('#imagen_pieza');
+            var src = '../../content/img/coming.gif'
+            $('#num_parte').change(function() {
+                var num_parte = $(this).val();
+                if (num_parte !== '') {
+                    $.ajax({
+                        data: {
+                          num_parte: num_parte
+                        },
+                        dataType: 'json',
+                        type: 'POST',
+                        url: 'acciones.php',
+                    }).done(function(data) {
+                        var len = data.length;
+                        imagen.attr('src', src);
+                        for (var i = 0; i < len; i++) {
+                            var src2 = data[i]['foto'];
+                            imagen.attr('src', src2);
+                        }
+
+                    });
+                } else {
+                    imagen.attr('src', src);
+                }
+            });
+        });
+    </script>
+    <!-- SCRIPT IMAGEN -->
+
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script type="text/javascript">
   function SumarTiempos(){
 	
-  var input1 = document.getElementById('time1');
+  var input1 = document.getElementById('dia');
   var input2 = document.getElementById('time2');
   var input3 = document.getElementById('tarde');
+  var input4 = document.getElementById('noche');
   var strMsg = '';
   
  
   var date1 = input1.valueAsDate;
   var date2 = input2.valueAsDate;
-  var date3= input3.valueAsDate;
+  var date3 = input3.valueAsDate;
+  var date4 = input4.valueAsDate;
     
-
+  if(date1 >= 1){
   var s = (date1.getTime() + date2.getTime());
-  
-  
   var ms = s % 1000;
   s = (s - ms) / 1000;
   var secs = s % 60;
@@ -347,6 +435,10 @@ foreach ($colaboradores as $cols) {
   strMsg = hrs + ':' + mins + ':' + secs;
   
 document.getElementById('resultado').value = strMsg;
+  }else{
+    document.getElementById('resultado').value = '';
+  }
+
 
 if(date3 >= 1){
 var f = (date2.getTime() + date3.getTime());
@@ -362,12 +454,39 @@ var ms2 = f % 1000;
 document.getElementById('resultado2').value = strMsg2;
 }
 else{
-  document.getElementById('resultado2').value = '0';
+  document.getElementById('resultado2').value = '';
+}
+
+if(date4 >= 1){
+var n = (date2.getTime() + date4.getTime());
+var ms3 = n % 1000;
+  n = (n - ms3) / 1000;
+  var secs3 = s % 60;
+  n = (n - secs3) / 60;
+  var mins3 = n % 60;
+  var hrs3 = (n - mins3) / 60;
+  
+  strMsg3 = hrs3 + ':' + mins3 + ':' + secs3;
+  
+document.getElementById('resultado3').value = strMsg3;
+}
+else{
+  document.getElementById('resultado3').value = '';
 }
 }
     </script>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var piezas = document.getElementById('dia');
+      var rate = document.getElementById('time2');
+      var actividad = document.getElementById('tarde');
+      var instructivo = document.getElementById('noche');
+      var foto = document.getElementById('noche');
 
+      
+
+    </script>
 </body>
 </html>
 

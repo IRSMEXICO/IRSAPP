@@ -471,6 +471,14 @@ public function cat_cliente_info(){
     }
     return $this->lista;
 }
+
+public function cat_cliente_cons($id_cliente_usuario){
+    $cliente=$this->db->query("SELECT * FROM cat_cliente_usuario where  id = '$id_cliente_usuario'");
+    while($filas=$cliente->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
 public function insertar($usuario,$id_cliente,$email,$cuenta,$contra){
     $insert=$this->db->query("INSERT INTO cat_cliente_usuario (usuario,cliente,email,cuenta,contra) values('$usuario','$id_cliente','$email','$cuenta','$contra')");
     echo'<script type="text/javascript">

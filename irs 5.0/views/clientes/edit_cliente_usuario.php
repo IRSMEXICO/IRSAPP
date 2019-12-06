@@ -2,7 +2,7 @@
 require_once("../../model/acciones.php");
 $id_cliente_usuario=$_GET['nik'];
 $cliente= new consul();
-$informacion_c = $cliente->cat_cliente_info($id_cliente_usuario);
+$informacion_c = $cliente->cat_cliente_cons($id_cliente_usuario);
 $info_cleinte =$cliente->cliente();
 
 ?>
@@ -20,6 +20,7 @@ $info_cleinte =$cliente->cliente();
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
 		<title>Datos de Catalogo de Clientes-Usuario</title>
 		<script type="text/javascript">
          function mostrarPassword(){

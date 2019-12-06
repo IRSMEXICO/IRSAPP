@@ -53,7 +53,6 @@ $informacion_c = $cliente->cliente();
 			<hr />
 			<br />
 			<form class="form-inline my-2 my-lg-0" style="float: right;" action= "add_cliente.php">
-			<input type="text" id="search" class="form-control mr-sm-2" placeholder="Buscar">
 			<button style="float: right;"  type="submit"  class="btn btn-success" value="Agregar Datos" ><span class="fas fa-plus-circle" ></span> Agregar Datos </button>
 			</form>
 			<br />

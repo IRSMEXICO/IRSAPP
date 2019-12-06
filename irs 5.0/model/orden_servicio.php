@@ -64,6 +64,14 @@ public function Colaboradores(){
     return $this->lista;
 }
 
+public function captura(){
+    $consulta=$this->db->query("SELECT * FROM cat_captura ");
+    while($filas=$consulta->fetch_array()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
+
 public function contrato(){
     $consulta=$this->db->query("SELECT * FROM cat_contrato ");
     while($filas=$consulta->fetch_array()){
