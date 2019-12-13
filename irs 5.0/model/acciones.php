@@ -1,28 +1,31 @@
 <?php
 include 'conexion.php';
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
 	class consul{
     private $db;//database
     private $lista;
     private $prov;
     private $tbl;
-    
 
     public function __construct(){
     $this->db=conexion::con();
         $this->lista=array();
     }
     public function login($usuario,$contrasena){
-        $consulta=$this->db->query("SELECT * FROM usuarios WHERE usuario='$usuario' AND contrasena='$contrasena'");
+        $consulta=$this->db->query("SELECT * FROM cat_colaboradores a, cat_rol b WHERE cuenta='$usuario' AND contra='$contrasena' 
+        AND a.id_rol = b.id_rol");
     while($filas=$consulta->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista;
 }
 
+public function login2($usuario,$contrasena){
+    $consulta=$this->db->query("SELECT * FROM cat_cliente_usuario WHERE cuenta='$usuario' AND contra='$contrasena'");
+while($filas=$consulta->fetch_assoc()){
+    $this->lista[]=$filas;
+}
+return $this->lista;
+}
     public function ext_actividad($act){
         $tipo_actividad = $this->db->query("INSERT INTO cat_actividades (tipo_actividad) values ('$act')");
         echo'<script type="text/javascript">
@@ -256,6 +259,7 @@ public function cat_del_rate($id){
     window.history.go(-1);
     </script>';
 }
+
 public function cat_del_registro($id){
 
     $cat_registro=$this->db->query("DELETE FROM cat_registro WHERE id_registro='$id'");
@@ -467,6 +471,14 @@ public function cat_cliente_info(){
     }
     return $this->lista;
 }
+
+public function cat_cliente_cons($id_cliente_usuario){
+    $cliente=$this->db->query("SELECT * FROM cat_cliente_usuario where  id = '$id_cliente_usuario'");
+    while($filas=$cliente->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista;
+}
 public function insertar($usuario,$id_cliente,$email,$cuenta,$contra){
     $insert=$this->db->query("INSERT INTO cat_cliente_usuario (usuario,cliente,email,cuenta,contra) values('$usuario','$id_cliente','$email','$cuenta','$contra')");
     echo'<script type="text/javascript">
@@ -527,6 +539,7 @@ public function cat_mod_rol($tipo_rol,$id_rol){
     window.history.go(-1);
     </script>';
 }   
+
 
 //REGISTROS DE AVANCES//
 

@@ -3,7 +3,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="../../controller/home.php">
+      <a class="navbar-brand" href="../admin.php">
           <img src="../../content/img/irs.png" width="130" height="30" alt="">
       </a>
     
