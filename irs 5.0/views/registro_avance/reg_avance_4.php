@@ -7,12 +7,13 @@
         $cliente = urldecode(rawurldecode($_GET['cliente']));
         $usuario = urldecode(rawurldecode($_GET['usuario']));
         $correo = urldecode(rawurldecode($_GET['correo']));
-        $folio2 = urldecode(rawurldecode($_GET['folio']));
+        $folio = urldecode(rawurldecode($_GET['folio']));
         $numero_parte = urldecode(rawurldecode($_GET['numero_parte']));
         $actividad = urldecode(rawurldecode($_GET['actividad']));
+        $tipo = urldecode(rawurldecode($_GET['tipo']));
 
         $colabordores_orden = new consul();
-        $col_orden = $colabordores_orden->GetColaboradoresByFolio($folio2);
+        $col_orden = $colabordores_orden->GetColaboradoresByFolio($folio);
 ?>
 
 <!-- PHP -->
@@ -46,6 +47,10 @@
             text-align: center !important;
             font-size: 15px;
         }
+
+        h1,h2{
+            font-size: 25px !important;
+        }
     </style>
 
     <script>
@@ -67,150 +72,183 @@
 
         
         <!-- TITULO -->
-        <div class="row" style="text-align: center; margin-top: 5%;">
-            <div class="col-md-12">
-                <h1>Registro de Avance</h1>
+            <div class="row" style="text-align: left; margin-top: 3%;">
+                <div class="col-md-12">
+                    <h1>Registro de Avance</h1>
+                </div>
             </div>
-        </div>
         <!-- TITULO -->
 
+        <form method="POST">
+
+        <input type="text" name="folio" id="folio" value="<?php echo $folio;?>" hidden readonly/>
+        <input type="text" name="cliente" id="cliente" value="<?php echo $cliente;?>" hidden readonly/>
+        <input type="text" name="usuario" id="usuario" value="<?php echo $usuario;?>" hidden readonly/>
+        <input type="text" name="numeros_parte" id="numeros_parte" value="<?php echo $numero_parte;?>" hidden readonly/>
+        <input type="text" name="actividad" id="actividad" value="<?php echo $actividad;?>" hidden readonly/>
+        <input type="text" name="tipo" id="tipo" value="<?php echo $tipo;?>" hidden readonly/>
+        <input type="text" name="usuario_captura" id="usuario_captura" value="<?php echo $operador;?>" hidden readonly/>
+        <!-- turno -->
+        
+        <input type="text" name="fecha" id="fecha" value="" hidden readonly>
+        
+        <?php foreach($col_orden as $row) {?>
+            <input type="text" name="operadores[]" id="operadores" value="<?php echo $row["id_empleado"];?>" hidden readonly> 
+        <?php } ?>
+        <input type="text" name="correo" id="correo" value="<?php echo $correo;?>" hidden readonly/>
 
         <!-- USUARIO -->
-        <div class="row" style="text-align: center; margin-top: 3%;">
-            <div class="col-md-4"></div>
-            <div class="col-md-1">
-                <h2>¡Hola!</h2>
+            <div class="row" style="text-align: center; margin-top: 1%;">
+                <div class="col-md-4"></div>
+                <div class="col-md-1">
+                    <h2>¡Hola!</h2>
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" value="<?php echo $operador; ?>" readonly class="form-control">
+                </div>
+
+                <div class="col-md-2"></div>
+
+
             </div>
-
-            <div class="col-md-3">
-                <input type="text" value="<?php echo $operador; ?>" name="usuario" id="usuario" readonly class="form-control">
-            </div>
-
-            <div class="col-md-4"></div>
-
-
-        </div>
         <!-- USUARIO -->
 
-        <!-- TIUTLO -->
-        <div class="row" style="text-align: center; margin-top: 2%;">
-            <div class="col-md-12">
-                <label> Favor de seleccionar a los compañeros que participaran en la inspección</label>
+        <!-- TITuLO -->
+            <div class="row" style="text-align: center; margin-top: 1%;">
+                <div class="col-md-12">
+                    <label> Favor de seleccionar a los compañeros que participaran en la inspección</label>
+                </div>
             </div>
-        </div>
         <!-- TITULO -->
 
 
         <!-- TURNO -->
-        <div class="row" style="text-align: center; margin-top: 2%;">
+            <div class="row" style="text-align: center; margin-top: 2%;">
 
-            <div class="col-md-12">
-                <h4>Turno</h4>
-            </div>
+                <div class="col-md-4"></div>
 
-        </div>
+                <div class="col-md-1">
+                    <h4>Turno  </h4>
+                </div>
 
-        <div class="row" style="text-align: center; margin-top: 2%;">
-
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-
+                <div class="col-md-4">
                 <input type="text" name="turno" id="turno" value="" class="form-control" readonly>
+                </div>
+
+                <div class="col-md-2"></div>
 
             </div>
-            <div class="col-md-4"></div>
-
-        </div>
-
         <!-- TURNO -->
 
         <!-- HORA A REGISTRAR -->
-        <div class="row" style="text-align: center; margin-top: 4%;">
+            <div class="row" style="text-align: center; margin-top: 4%;">
 
-            <!-- <div class="col-md-4"> </div> -->
+                <!-- <div class="col-md-4"> </div> -->
 
-            <div class="col-md-4"></div>
+                <div class="col-md-3"></div>
 
-            <div class="col-md-1">
-                <h4>Horario</h4>
+                <div class="col-md-2">
+                    <h4>Horario</h4>
+                </div>
+
+                <div class="col-md-2">
+
+                    <input type="text" id="hora_inicio" value="" class="form-control" readonly>
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <input type="text" id="hora_final" value="" class="form-control" readonly>
+
+                </div>
+
+                <div class="col-md-3"></div>
+
+                <!-- <div class="col-md-3"> </div> -->
+
+
+
             </div>
-
-            <div class="col-md-2">
-
-                <input type="text" name="hora_inicio" id="hora_inicio" value="" class="form-control" readonly>
-
-            </div>
-
-            <div class="col-md-2">
-
-                <input type="text" name="hora_final" id="hora_final" value="" class="form-control" readonly>
-
-            </div>
-
-            <div class="col-md-4"></div>
-
-            <!-- <div class="col-md-3"> </div> -->
-
-
-
-        </div>
         <!-- HORA A REGISTRAR -->
 
         <!-- TABLA COLABORADORES -->
-        <div class="row" style="text-align: center; margin-top: 4%;">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-        <table class="table table-responive table-dark table-hover">
-        <thead>
-            <th scope="col">Colaborador</th>
-            <th scope="col">Asistencia</th>
-        </thead>
+            <div class="row" style="text-align: center; margin-top: 4%;">
+            <div class="col-md-5"></div>
+            <div class="col-md-4">
+            <table class="table table-responive table-dark table-hover">
+            <thead>
+                <th scope="col">Colaborador</th>
+                <th scope="col">Asistencia</th>
+            </thead>
 
-        <?php foreach($col_orden as $row) {?>
-            <td><?php echo $row['id_empleado'];?></td>
-            <td><input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Si" data-off="No"></td>
-        <?php } ?>
-        </table>
-        </div>
-        <div class="col-md-4"></div>
-        </div>
+            <?php foreach($col_orden as $row) {?>
+                <tr>
+                <td><?php echo $row['id_empleado'];?></td>
+                <td><input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Si" data-off="No" id="asistencia" name="asistencia"></td>
+                </tr>
+                <?php } ?>
+            </table>
+            </div>
+            <div class="col-md-3"></div>
+            </div>
         <!-- TABLA COLABORADORES -->
         
+
+
+        
         <!-- BOTON -->
-        <div class="row" style="text-align: center; margin-top: 2%;">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <button type="submit" class="btn-success btn-lg">Siguiente</button>
-        </div>
-            <div class="col-md-4"></div>
-        </div>
+            <div class="row" style="text-align: center; margin-top: 2%;">
+            <div class="col-md-4">
+            <button type="submit" class="btn-danger btn-lg" formaction="reg_avance_3.php">Atras</button>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+                <div class="col-md-4">
+                <button type="submit" class="btn-success btn-lg" formaction="reg_avance_5.php">Siguiente</button>
+                </div>
+            </div>
         <!-- BOTON -->
 
     </div>
+    </form>
 
     <!-- SCRIPT -->
     <script>
         function startTime() {
             var today = new Date();
-            var hora_actual = today.getHours();
+            var dia = today.getDay();
+            var mes = today.getMonth();
+            var año = today.getFullYear();
+            var hr = today.getHours();
+            var min = today.getMinutes();
+            var sec = today.getSeconds();
             var fecha1 = new Date(2000, 1, 1, 23, 0, 0, 0);
             var fecha2 = new Date(2000, 1, 1, 22, 0, 0, 0);
             var diferenciaHoras = fecha1.getHours() - fecha2.getHours();
-            var hr = today.getHours() - diferenciaHoras;
-            var min = today.getMinutes();
-            var sec = today.getSeconds();
+            
             //Add a zero in front of numbers<10
             min = checkTime(min);
             sec = checkTime(sec);
-            document.getElementById("hora_inicio").value = hr + " : " + min + " : " + sec;
-            document.getElementById("hora_final").value = hora_actual + " : " + min + " : " + sec;
-
-            if (hora_actual >= "6" && hora_actual < "18") {
+            // document.getElementById("hora_inicio").value = hr + " : " + min + " : " + sec;
+            // document.getElementById("hora_final").value = hora_actual + " : " + min + " : " + sec;
+            document.getElementById("fecha").value = dia + "/" + mes + "/" + año;
+            if (hr >= "6" && hr < "18") {
                 var turno = document.getElementById("turno");
                 turno.value = "Matutino";
-            } else if (hora_actual >= "18" || hora_actual < "6") {
+            } else{
                 var turno = document.getElementById("turno");
                 turno.value = "Nocturno";
+            }
+
+            if(min<="15"){
+                document.getElementById("hora_inicio").value = hr - diferenciaHoras + ":" + "00" +":"+ "00";
+                document.getElementById("hora_final").value = hr + ":" + "00" +":"+ "00";
+            }else if(min>"15"){
+                document.getElementById("hora_inicio").value = hr + ":" + "00" +":"+ "00";
+                document.getElementById("hora_final").value = hr + diferenciaHoras + ":" + "00" +":"+ "00";
             }
 
             var time = setTimeout(function() {

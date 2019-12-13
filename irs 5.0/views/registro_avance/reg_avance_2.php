@@ -1,11 +1,22 @@
 <?php
-include("../../model/sesiones.php");
-require_once("../../model/acciones.php");
+    include("../../model/sesiones.php");
+    require_once("../../model/acciones.php");
 
-$cliente = $_POST['btn-cliente'];
+    if(isset($_POST['btn-cliente']) && (!empty($_POST['btn-cliente']))){
 
-$get_usuarios_clientes = new consul();
-$usuarios_clientes = $get_usuarios_clientes->GetUsuariosClientes($cliente);
+        $cliente = $_POST['btn-cliente'];
+        $get_usuarios_clientes = new consul();
+        $usuarios_clientes = $get_usuarios_clientes->GetUsuariosClientes($cliente);
+
+    }
+
+
+
+    if(isset($_GET['cliente']) && (!empty($_GET['cliente']))){
+        $cliente = urldecode(rawurldecode($_GET['cliente']));
+        $get_usuarios_clientes = new consul();
+        $usuarios_clientes = $get_usuarios_clientes->GetUsuariosClientes($cliente);
+    }
 
 ?>
 
@@ -28,6 +39,7 @@ $usuarios_clientes = $get_usuarios_clientes->GetUsuariosClientes($cliente);
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
     <style>
+
         button {
             width: 150px !important;
         }
@@ -46,363 +58,404 @@ $usuarios_clientes = $get_usuarios_clientes->GetUsuariosClientes($cliente);
         input {
             text-align: center;
         }
+
+        html,body { 
+        overflow:hidden; 
+        }
+        
     </style>
 
-    <script>
-        $(document).ready(function() {
-            $('.menuContainer').load('../inspector.php');
-        });
-    </script>
 
 </head>
 
 <body>
-    <div class="menuContainer"></div>
+    
 
     <div class="container">
 
-        <form method="POST">
+       
 
             <!-- TITULO -->
+                <div class="row" style="text-align: center; margin-top: 2%;">
+                    <div class="col-md-12">
+                        <h1>Registro de Avance</h1>
+                    </div>
+                </div>
+            <!-- TITULO -->
+            
             <div class="row" style="text-align: center; margin-top: 2%;">
                 <div class="col-md-12">
-                    <h1>Registro de Avance</h1>
+                <label for="">Instructivo</label>
                 </div>
             </div>
-            <!-- TITULO -->
 
-            <!-- CLIENTE -->
             <div class="row" style="text-align: center; margin-top: 2%;">
                 <div class="col-md-4"></div>
+                <div class="col-md-4">
+                <a id="btn-instructivo" href="" download="Instructivo">
+                            <button id="instructivo" name="instructivo" class=" btn btn-lg btn-danger enable">
+                                <i class="fas fa-file-download fa-spin"></i>
+                            </button>
+                        </a>
+                        </div>
+                        <div class="col-md-4"></div>
+            </div>
+
+            <form method="POST">
+            <!-- LABELS -->
+                <div class="row" style="text-align: center; margin-top: 3%;">
+
                 <div class="col-md-4">
                     <label>Cliente</label>
-                    <input type="text" name="cliente" id="cliente" value="<?php echo $cliente ?>" readonly class="form-control">
                 </div>
-                <div class="col-md-4"></div>
-            </div>
-            <!-- CLIENTE -->
-
-            <!-- USUARIO -->
-            <div class="row" style="text-align: center; margin-top: 2%;">
-
-                <!-- SELECT USUARIO -->
-                <div class="col-md-6">
-                    <label>Usuario: </label>
-                    <select name="usuario" id="usuario" class="form-control">
-                        <option value="">Seleccionar Usuario:</option>
-                        <?php foreach ($usuarios_clientes as $row) { ?>
-                            <option value="<?php echo $row['id_usuario']; ?>"><?php echo $row['id_usuario']; ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <!-- SELECT USUARIO -->
-
-                <!-- INPUT CORREO -->
-                <div class="col-md-6">
-                    <label>Correo</label>
-                    <input type="text" name="correo" id="correo" class="form-control" readonly>
-                </div>
-                <!-- INPUT CORREO -->
-
-            </div>
-            <!-- USUARIO -->
-
-            <!-- FOLIO -->
-            <div class="row" style="text-align: center; margin-top: 3%;">
-                <div class="col-md-4"></div>
 
                 <div class="col-md-4">
-
-                    <label>Folio: </label>
-
-                    <select name="folio" id="folio" class="form-control">
-                        <option value="">Seleccionar Folio:</option>
-                    </select>
-
+                <label>Usuario: </label>
                 </div>
 
-                <div class="col-md-4"></div>
-            </div>
-            <!-- FOLIO -->
-
-            <!-- NUMEROS DE PARTE & ACTIVIDAD - IMAGEN -->
-            <div class="row" style="text-align: center; margin-top: 5%;">
+                <div class="col-md-4">
+                <label>Correo</label>
+                </div>
                 
-            <div class="col-md-2"></div>
-                <div class="col-md-4">
-                    <label for="">Numeros de Parte</label>
-                    <select name="numeros_parte" id="numeros_parte" class="form-control">
-                        <option value="">Seleccionar Numero De Parte:</option>
-                    </select>
                 </div>
+            <!-- LABELS -->
+            
+            <!-- CLIENTE & USUARIO & CORREO -->
+                <div class="row" style="text-align: center; margin-top: 2%;">
+                    
 
-                <div class="col-md-4">
-                    <label>Actividad</label><br>
-                    <input type="text" id="actividad" name="actividad" class="form-control" readonly><br>
-                    <img src="" id="img" name="img" height="150px" width="350px" style="height:150px !important; width:350x !important;">
-                </div>
-                <div class="col-md-2"></div>                
-            </div>
-            <!-- NUMEROS DE PARTE & ACTIVIDAD - IMAGEN -->
+                    <div class="col-md-4">
+                        <input type="text" name="cliente" id="cliente" value="<?php echo $cliente ?>" readonly class="form-control">
+                    </div>
+                    
+                    <!-- SELECT USUARIO -->
+                    <div class="col-md-4">
+                        <select name="usuario" id="usuario" class="form-control">
+                            <option value="">Seleccionar Usuario:</option>
+                            <?php foreach ($usuarios_clientes as $row) { ?>
+                                <option value="<?php echo $row['id_usuario']; ?>"><?php echo $row['id_usuario']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <!-- SELECT USUARIO -->
 
-               <!-- BUTTON SIGUIENTE -->
-               <div class="row" style="text-align: center; margin-top: 5%;">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <button type="submit" formaction="reg_avance_3.php"  class="btn btn-success">Siguiente</button>
+                        <!-- INPUT CORREO -->
+                        <div class="col-md-4">
+                        <input type="text" name="correo" id="correo" class="form-control" readonly>
+                    </div>
+                    <!-- INPUT CORREO -->
+
                 </div>
-                <div class="col-md-4"></div>
-            </div>
-            <!-- BUTTON SIGUIENTE -->
-        </form>
-         
-        <!-- INSTRUCTIVO -->
-        <div class="row" style="text-align: center; margin-top: 5%;">
-        <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <label>Instructivo</label><br>
-                    <a id="btn-instructivo" href="" download="Instructivo">
-                        <button id="instructivo" name="instructivo" class=" btn btn-lg btn-danger">
-                            <i class="fas fa-file-download fa-spin"></i>
-                        </button>
-                    </a>
+            <!-- CLIENTE & USUARIO & CORREO -->
+            
+            <!-- LABELS  -->
+                <div class="row" style="text-align: center; margin-top: 4%;">
+                
+                    <div class="col-md-2">
+                        <label>Folio</label>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Numero de Parte </label>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Actividad</label>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Foto</label>
+                    </div>
+                
                 </div>
-                <div class="col-md-4"></div>
-        </div> 
-        <!-- INSTRUCTIVO -->      
+            <!-- LABELS  -->                    
+           
+            <!-- FOLIO & NUM PARTE & ACTIVIDAD & FOTO -->
+                <div class="row" style="text-align: center; margin-top: 1%;">
+                        
+
+                        <!-- SELECT FOLIO -->
+                            <div class="col-md-2">
+                                <select type="text" name="folio" id="folio" value=""  class="form-control">
+                                    <option value="Seleccionar Folio:"></option>
+                                </select>
+                            </div>
+                        <!-- SELECT FOLIO -->
+                        
+                        <!-- SELECT NUM PARTE -->
+                            <div class="col-md-2">
+                                <select name="numeros_parte" id="numeros_parte" class="form-control">
+                                    <option value="">Seleccionar Numero de Parte:</option>
+                                </select>
+                            </div>
+                        <!-- SELECT NUM PARTE -->
+
+                        <!-- INPUT ACTIVIDAD -->
+                            <div class="col-md-4">
+                                <input type="text" name="actividad" id="actividad" class="form-control" readonly>
+                            </div>
+                        <!-- INPUT ACTIVIDAD -->
+
+                        <!--  IMG FOTO -->
+                            <div class="col-md-4">
+                                <img src="../../content/img/coming.gif" name="img" id="img" height="130px" width="300px">
+                            </div>
+                        <!--  IMG FOTO -->
+
+                </div>
+            <!-- FOLIO & NUM PARTE & ACTIVIDAD & FOTO --> 
+            
+
+            <!-- BTN ATRAS & BTN INSTRUCTIVO & BTN SIGUIENTES -->
+                <div class="row" style="text-align: center; margin-top: 5%;">
+                    
+                    <div class="col-md-4">
+                        <button type="submit" formaction="reg_avance_1.php"  class="btn btn-danger">Atras</button>
+                    </div>
+
+                    <div class="col-md-4">                         
+                    </div>
+                                 
+                    <div class="col-md-4">
+                        <button type="submit" formaction="reg_avance_3.php"  class="btn btn-success">Siguiente</button>
+                    </div>  
+                    
+                </div>
+            <!-- BTN ATRAS & BTN INSTRUCTIVO & BTN SIGUIENTES -->
+            </form>
         
-        <div class="row" style="text-align: center; margin-top: 10%;">
-            <div class="col-md-12"></div>
-        </div>
+         
     </div>
+    
 
     <!-- SCRIPT CORREO -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-            $('#usuario').change(function() {
-                var usuario = $(this).val();
-                var cliente = $('#cliente').val();
-                if (usuario !== '') {
-                    $.ajax({
-                        data: {
-                            cliente: cliente,
-                            usuario: usuario
+                $('#usuario').change(function() {
+                    var usuario = $(this).val();
+                    var cliente = $('#cliente').val();
+                    if (usuario !== '') {
+                        $.ajax({
+                            data: {
+                                cliente: cliente,
+                                usuario: usuario
 
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        url: '../../controller/registro_avances.php',
-                    }).done(function(data) {
-                        var len = data.length;
-                        $("#correo").val('');
+                            },
+                            dataType: 'json',
+                            type: 'POST',
+                            url: '../../controller/registro_avances.php',
+                        }).done(function(data) {
+                            var len = data.length;
+                            $("#correo").val('');
 
-                        for (var i = 0; i < len; i++) {
+                            for (var i = 0; i < len; i++) {
 
-                            var correo = data[i]['correo_usuario'];
-                            $("#correo").val(correo);
-                        }
+                                var correo = data[i]['correo_usuario'];
+                                $("#correo").val(correo);
+                            }
 
-                    });
-                } else {
-                    var sincorreo = "Usuario sin correo";
-                    $("#correo").empty();
-                    $("#correo").val(sincorreo);
+                        });
+                    } else {
+                        var sincorreo = "Usuario sin correo";
+                        $("#correo").empty();
+                        $("#correo").val(sincorreo);
 
-                }
+                    }
+                });
             });
-        });
-    </script>
+        </script>
     <!-- SCRIPT CORREO-->
 
 
     <!-- SCRIPT FOLIO-->
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-            $('#usuario').change(function() {
-                var usuario_cliente = $(this).val();
-                var cliente2 = $('#cliente').val();
+                $('#usuario').change(function() {
+                    var usuario_cliente = $(this).val();
+                    var cliente2 = $('#cliente').val();
 
-                if (usuario_cliente !== '') {
-                    $.ajax({
-                        data: {
-                            cliente2: cliente2,
-                            usuario_cliente: usuario_cliente
+                    if (usuario_cliente !== '') {
+                        $.ajax({
+                            data: {
+                                cliente2: cliente2,
+                                usuario_cliente: usuario_cliente
 
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        url: '../../controller/registro_avances.php',
-                    }).done(function(data) {
-                        var len = data.length;
-                        $("#folio").empty();
+                            },
+                            dataType: 'json',
+                            type: 'POST',
+                            url: '../../controller/registro_avances.php',
+                        }).done(function(data) {
+                            var len = data.length;
+                            $("#folio").empty();
+                            var seleccionar = "Seleccionar Folio:";
+                            $("#folio").append("<option value=''>" + seleccionar + "</option>");
+                            for (var i = 0; i < len; i++) {
+
+                                var folio = data[i]['folio'];
+
+                                $("#folio").append("<option value='" + folio + "'>" + folio + "</option>");
+                            }
+
+                        });
+                    } else {
                         var seleccionar = "Seleccionar Folio:";
+                        $("#folio").empty();
                         $("#folio").append("<option value=''>" + seleccionar + "</option>");
-                        for (var i = 0; i < len; i++) {
-
-                            var folio = data[i]['folio'];
-
-                            $("#folio").append("<option value='" + folio + "'>" + folio + "</option>");
-                        }
-
-                    });
-                } else {
-                    var seleccionar = "Seleccionar Folio:";
-                    $("#folio").empty();
-                    $("#folio").append("<option value=''>" + seleccionar + "</option>");
-                }
+                    }
+                });
             });
-        });
-    </script>
+        </script>
     <!-- SCRIPT FOLIO -->
 
     <!-- SCRIPT NUMERO DE PARTE-->
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-            $('#folio').change(function() {
-                var folio = $(this).val();
+                $('#folio').change(function() {
+                    var folio = $(this).val();
+                    var us_irs = $("#usuario").val();
 
+                    if (folio !== '') {
+                        $.ajax({
+                            data: {
+                                folio: folio,
+                                us_irs: us_irs   
+                            },
+                            dataType: 'json',
+                            type: 'POST',
+                            url: '../../controller/registro_avances.php',
+                        }).done(function(data) {
+                            var len = data.length;
+                            $("#numeros_parte").empty();
+                            var seleccionar = "Seleccionar Numero De Parte:";
+                            $("#numeros_parte").append("<option value=''>" + seleccionar + "</option>");
+                            for (var i = 0; i < len; i++) {
 
-                if (folio !== '') {
-                    $.ajax({
-                        data: {
-                            folio: folio
+                                var pieza = data[i]['id_pieza'];
 
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        url: '../../controller/registro_avances.php',
-                    }).done(function(data) {
-                        var len = data.length;
-                        $("#numeros_parte").empty();
+                                $("#numeros_parte").append("<option value='" + pieza + "'>" + pieza + "</option>");
+                            }
+
+                        });
+                    } else {
                         var seleccionar = "Seleccionar Numero De Parte:";
+                        $("#numeros_parte").empty();
                         $("#numeros_parte").append("<option value=''>" + seleccionar + "</option>");
-                        for (var i = 0; i < len; i++) {
-
-                            var pieza = data[i]['id_pieza'];
-
-                            $("#numeros_parte").append("<option value='" + pieza + "'>" + pieza + "</option>");
-                        }
-
-                    });
-                } else {
-                    var seleccionar = "Seleccionar Numero De Parte:";
-                    $("#numeros_parte").empty();
-                    $("#numeros_parte").append("<option value=''>" + seleccionar + "</option>");
-                }
+                    }
+                });
             });
-        });
-    </script>
+        </script>
     <!-- SCRIPT NUMERO DE PARTE -->
 
     <!-- SCRIPT INSTRUCTIVO -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-            $('#folio').change(function() {
-                var folio3 = $(this).val();
+                $('#folio').change(function() {
+                    var folio3 = $(this).val();
 
-                if (folio3 !== '') {
-                    $.ajax({
-                        data: {
-                            folio3: folio3
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        url: '../../controller/registro_avances.php',
-                    }).done(function(data) {
+                    if (folio3 !== '') {
+                        $.ajax({
+                            data: {
+                                folio3: folio3
+                            },
+                            dataType: 'json',
+                            type: 'POST',
+                            url: '../../controller/registro_avances.php',
+                        }).done(function(data) {
 
-                        var len = data.length;
+                            var len = data.length;
+                            
+                            for (var i = 0; i < len; i++) {
 
-                        for (var i = 0; i < len; i++) {
+                                var instructivo = data[i]['instructivo'];
 
-                            var instructivo = data[i]['instructivo'];
+                               
+                                $("#btn-instructivo").attr("href", instructivo);
+                            }
 
-                            $("#btn-instructivo").attr("href", instructivo);
-                        }
-
-                    });
-                }
+                        });
+                    }
+                });
             });
-        });
-    </script>
+        </script>
     <!-- SCRIPT INSTRUCTIVO -->
 
     <!-- SCRIPT ACTIVIDAD -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-            $('#numeros_parte').change(function() {
-                var folio4 = $('#folio').val();
+                $('#numeros_parte').change(function() {
+                    var folio4 = $('#folio').val();
 
-                if (folio4 !== '') {
-                    $.ajax({
-                        data: {
-                            folio4: folio4
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        url: '../../controller/registro_avances.php',
-                    }).done(function(data) {
+                    if (folio4 !== '') {
+                        $.ajax({
+                            data: {
+                                folio4: folio4
+                            },
+                            dataType: 'json',
+                            type: 'POST',
+                            url: '../../controller/registro_avances.php',
+                        }).done(function(data) {
 
-                        var len = data.length;
-                        $("#actividad").val('');
-                        for (var i = 0; i < len; i++) {
+                            var len = data.length;
+                            $("#actividad").val('');
+                            for (var i = 0; i < len; i++) {
 
-                            var actividad = data[i]['actividades'];
-                            $("#actividad").val(actividad);
-                        }
+                                var actividad = data[i]['actividades'];
+                                $("#actividad").val(actividad);
+                            }
 
-                    });
-                } else {
-                    var sinact = "Orden de Servicio Sin Actividad";
-                    $("#actividad").empty();
-                    $("#actividad").val(sinact);
-                }
+                        });
+                    } else {
+                        var sinact = "Orden de Servicio Sin Actividad";
+                        $("#actividad").empty();
+                        $("#actividad").val(sinact);
+                    }
+                });
             });
-        });
-    </script>
+        </script>
     <!-- SCRIPT ACTIVIDAD  -->
 
     <!-- SCRIPT IMAGEN -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-            $('#numeros_parte').change(function() {
-                var parte = $(this).val();
+                $('#numeros_parte').change(function() {
+                    var parte = $(this).val();
 
-                if (parte !== '') {
-                    $.ajax({
-                        data: {
-                            parte: parte
-                        },
-                        dataType: 'json',
-                        type: 'POST',
-                        url: '../../controller/registro_avances.php',
-                    }).done(function(data) {
+                    if (parte !== '') {
+                        $.ajax({
+                            data: {
+                                parte: parte
+                            },
+                            dataType: 'json',
+                            type: 'POST',
+                            url: '../../controller/registro_avances.php',
+                        }).done(function(data) {
 
-                        var len = data.length;
+                            var len = data.length;
 
-                        for (var i = 0; i < len; i++) {
+                            for (var i = 0; i < len; i++) {
 
-                            var imagen = data[i]['foto'];
+                                var imagen = data[i]['foto'];
 
-                            $("#img").attr("src", imagen);
-                        }
+                                $("#img").attr("src", imagen);
+                            }
 
-                    });
-                }
+                        });
+                    }
+                });
             });
-        });
-    </script>
+        </script>
     <!--SCRIPT IMAGEN -->
 
 

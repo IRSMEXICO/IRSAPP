@@ -4,7 +4,14 @@ include("../../model/sesiones.php");
 require_once("../../model/acciones.php");
 
 if (isset($_POST['cliente'], $_POST['usuario'], $_POST['correo'], $_POST['folio'],
-$_POST['numeros_parte'], $_POST['actividad'])) {
+ $_POST['numeros_parte'], $_POST['actividad']) 
+ && (!empty($_POST['cliente'])) 
+ && (!empty($_POST['usuario'])) 
+ && (!empty($_POST['correo'])) 
+ && (!empty($_POST['folio'])) 
+ && (!empty($_POST['numeros_parte'])) 
+ && (!empty($_POST['actividad'])) ) {
+
     $cliente = $_POST['cliente'];
     $usuario = $_POST['usuario'];
     $correo = $_POST['correo'];
@@ -14,10 +21,52 @@ $_POST['numeros_parte'], $_POST['actividad'])) {
 
     $colaboradores = new consul();
     $col = $colaboradores->GetColaboradores($folio);
-}
+   
 
+    $tipo = new consul();
+    $tip = $tipo->GetTipo($folio);
+    foreach($tip as $row){$tipo = $row['id_contrato'];}
 
+    $captura = new consul();
+    $cap = $captura->GetCaptura($tipo); 
 
+} else if (isset($_GET['cliente'], $_GET['usuario'], $_GET['correo'], $_GET['folio'],
+            $_GET['numeros_parte'], $_GET['actividad']) 
+            && (!empty($_GET['cliente'])) 
+            && (!empty($_GET['usuario'])) 
+            && (!empty($_GET['correo'])) 
+            && (!empty($_GET['folio'])) 
+            && (!empty($_GET['numeros_parte'])) 
+            && (!empty($_GET['actividad'])) ) {
+
+        
+        $cliente = urldecode(rawurldecode($_GET['cliente']));
+        $usuario = urldecode(rawurldecode($_GET['usuario']));
+        $correo = urldecode(rawurldecode($_GET['correo']));
+        $folio = urldecode(rawurldecode($_GET['folio']));
+        $num_parte = urldecode(rawurldecode($_GET['numeros_parte']));
+        $actividad = urldecode(rawurldecode($_GET['actividad']));
+
+        $colaboradores = new consul();
+        $col = $colaboradores->GetColaboradores($folio);
+        
+
+        $tipo = new consul();
+        $tip = $tipo->GetTipo($folio);
+        foreach($tip as $row){$tipo = $row['id_contrato'];}
+
+        $captura = new consul();
+        $cap = $captura->GetCaptura($tipo); 
+
+        }
+
+        else{
+            $cliente = urlencode(rawurlencode($_POST['cliente']));
+            echo '<script type="text/javascript">
+            alert("Favor de llenar el formulario");
+            window.location.href="reg_avance_2.php?cliente='.$cliente.' ";
+            </script>';
+        }  
 
 ?>
 <!-- PHP -->
@@ -55,7 +104,7 @@ $_POST['numeros_parte'], $_POST['actividad'])) {
         }
 
         button {
-            height: 80px !important;
+            height: 50px !important;
             width: 250px !important;
         }
     </style>
@@ -70,8 +119,8 @@ $_POST['numeros_parte'], $_POST['actividad'])) {
 
 
 
-<body onload="mueveReloj()">
-    <div class="menuContainer"></div>
+<body onload="startTime();">
+    
 
     <div class="container">
         <!-- TITULO -->
@@ -81,6 +130,10 @@ $_POST['numeros_parte'], $_POST['actividad'])) {
             </div>
         </div>
         <!-- TITULO -->
+     
+        <?php foreach($cap as $row){?>
+      <input type="text" value="<?php echo $row['tipo_captura']; ?>" id="tipo" name="tipo">
+        <?php } ?>
 
         <!-- HORA A REGISTRAR -->
         <div class="row" style="text-align: center; margin-top: 2%;">
@@ -92,15 +145,15 @@ $_POST['numeros_parte'], $_POST['actividad'])) {
             </div>
 
             <div class="col-md-2">
-                <form name="form_reloj">
-                    <input type="text" name="reloj" id="HORA_INICIO" value="" class="form-control" readonly>
-                </form>
+               
+            <input type="text" name="hora_inicio" id="hora_inicio" value="" class="form-control" readonly>
+               
             </div>
 
             <div class="col-md-2">
-                <form name="form_reloj_final">
-                    <input type="text" name="HORA_FIN" id="HORA_FIN" value="" class="form-control" readonly>
-                </form>
+            
+            <input type="text" name="hora_final" id="hora_final" value="" class="form-control" readonly>
+            
             </div>
 
             <div class="col-md-3"> </div>
@@ -110,42 +163,8 @@ $_POST['numeros_parte'], $_POST['actividad'])) {
         </div>
         <!-- HORA A REGISTRAR -->
 
-        <!-- SCRIPT TIEMPO -->
-        <script>
-            function mueveReloj() {
 
-                momentoActual = new Date()
-                hora = momentoActual.getHours() - 1
-                minuto = momentoActual.getMinutes()
-                segundo = momentoActual.getSeconds()
-
-                str_segundo = new String(segundo)
-                if (str_segundo.length == 1)
-                    segundo = "0" + segundo
-
-                str_minuto = new String(minuto)
-                if (str_minuto.length == 1)
-                    minuto = "0" + minuto
-
-                str_hora = new String(hora)
-                if (str_hora.length == 1)
-                    hora = "0" + hora
-
-                horaImprimible = hora + " : " + minuto + " : " + segundo
-
-                document.form_reloj.reloj.value = horaImprimible
-
-                hora_final = momentoActual.getHours()
-                horaImprimibleFinal = hora_final + " : " + minuto + " : " + segundo
-                document.form_reloj_final.HORA_FIN.value = horaImprimibleFinal
-
-                setTimeout("mueveReloj()", 1000)
-            }
-
-        </script>
-        <!-- SCRIPT TIEMPO -->
-
-        <form method="POST" action="../../controller/registro_avances.php">
+        <form method="POST">
 
             <input type="text" name="cliente" id="cliente" value="<?php echo $cliente; ?>" hidden readonly>
             <input type="text" name="usuario" id="usuario" value="<?php echo $usuario; ?>" hidden readonly>
@@ -153,7 +172,7 @@ $_POST['numeros_parte'], $_POST['actividad'])) {
             <input type="text" name="folio" id="folio" value="<?php echo $folio; ?>" hidden readonly>
             <input type="text" name="numero_parte" id="numero_parte" value="<?php echo $num_parte; ?>" hidden readonly>
             <input type="text" name="actividad" id="actividad" value="<?php echo $actividad; ?>" hidden readonly>
-
+            <input type="text" name="tipo" id="tipo" value="<?php echo $row['tipo_captura']; ?>" hidden readonly>
             <!-- OPERADOR -->
             <div class="row" style="text-align: center; margin-top: 1%;">
 
@@ -197,17 +216,66 @@ $_POST['numeros_parte'], $_POST['actividad'])) {
 
             <!-- BUTTON SIGUIENTE -->
             <div class="row" style="text-align: center; margin-top: 5%;">
-                <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <button class="btn btn-success" id="btn-sig" name="btn-sig">Siguiente</button>
+                <button type="submit" formaction="reg_avance_2.php?cliente=<?php echo $cliente ?>"  class="btn btn-danger">Atras</button>
                 </div>
-                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                
+                </div>
+                <div class="col-md-4">
+                <button class="btn btn-success" formaction="../../controller/registro_avances.php" id="btn-sig" name="btn-sig">Siguiente</button>
+                </div>
             </div>
             <!-- BUTTON SIGUIENTE -->
         </form>
 
     </div>
 
+     <!-- SCRIPT -->
+     <script>
+        function startTime() {
+            var today = new Date();
+            var hr = today.getHours();
+            var min = today.getMinutes();
+            var sec = today.getSeconds();
+            var fecha1 = new Date(2000, 1, 1, 23, 0, 0, 0);
+            var fecha2 = new Date(2000, 1, 1, 22, 0, 0, 0);
+            var diferenciaHoras = fecha1.getHours() - fecha2.getHours();
+            
+            //Add a zero in front of numbers<10
+            min = checkTime(min);
+            sec = checkTime(sec);
+            // document.getElementById("hora_inicio").value = hr + " : " + min + " : " + sec;
+            // document.getElementById("hora_final").value = hora_actual + " : " + min + " : " + sec;
+
+            if (hr >= "6" && hr < "18") {
+                var turno = document.getElementById("turno");
+                // turno.value = "Matutino";
+            } else if (hr >= "18" && hr < "6") {
+                var turno = document.getElementById("turno");
+                // turno.value = "Nocturno";
+            }
+
+            if(min<="15"){
+                document.getElementById("hora_inicio").value = hr - diferenciaHoras + ":" + "00" +":"+ "00";
+                document.getElementById("hora_final").value = hr + ":" + "00" +":"+ "00";
+            }else if(min>"15"){
+                document.getElementById("hora_inicio").value = hr + ":" + "00" +":"+ "00";
+                document.getElementById("hora_final").value = hr + diferenciaHoras + ":" + "00" +":"+ "00";
+            }
+
+            var time = setTimeout(function() {
+                startTime()
+            }, 500);
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+    </script>
 </body>
                         }
 </html>

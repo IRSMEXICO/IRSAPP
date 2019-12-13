@@ -1,31 +1,28 @@
 <?php
 include 'conexion.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 	class consul{
     private $db;//database
     private $lista;
     private $prov;
     private $tbl;
+    
 
     public function __construct(){
     $this->db=conexion::con();
         $this->lista=array();
     }
     public function login($usuario,$contrasena){
-        $consulta=$this->db->query("SELECT * FROM cat_colaboradores a, cat_rol b WHERE cuenta='$usuario' AND contra='$contrasena' 
-        AND a.id_rol = b.id_rol");
+        $consulta=$this->db->query("SELECT * FROM usuarios WHERE usuario='$usuario' AND contrasena='$contrasena'");
     while($filas=$consulta->fetch_assoc()){
         $this->lista[]=$filas;
     }
     return $this->lista;
 }
 
-public function login2($usuario,$contrasena){
-    $consulta=$this->db->query("SELECT * FROM cat_cliente_usuario WHERE cuenta='$usuario' AND contra='$contrasena'");
-while($filas=$consulta->fetch_assoc()){
-    $this->lista[]=$filas;
-}
-return $this->lista;
-}
     public function ext_actividad($act){
         $tipo_actividad = $this->db->query("INSERT INTO cat_actividades (tipo_actividad) values ('$act')");
         echo'<script type="text/javascript">
@@ -259,7 +256,6 @@ public function cat_del_rate($id){
     window.history.go(-1);
     </script>';
 }
-
 public function cat_del_registro($id){
 
     $cat_registro=$this->db->query("DELETE FROM cat_registro WHERE id_registro='$id'");
@@ -471,14 +467,6 @@ public function cat_cliente_info(){
     }
     return $this->lista;
 }
-
-public function cat_cliente_cons($id_cliente_usuario){
-    $cliente=$this->db->query("SELECT * FROM cat_cliente_usuario where  id = '$id_cliente_usuario'");
-    while($filas=$cliente->fetch_assoc()){
-        $this->lista[]=$filas;
-    }
-    return $this->lista;
-}
 public function insertar($usuario,$id_cliente,$email,$cuenta,$contra){
     $insert=$this->db->query("INSERT INTO cat_cliente_usuario (usuario,cliente,email,cuenta,contra) values('$usuario','$id_cliente','$email','$cuenta','$contra')");
     echo'<script type="text/javascript">
@@ -540,7 +528,6 @@ public function cat_mod_rol($tipo_rol,$id_rol){
     </script>';
 }   
 
-
 //REGISTROS DE AVANCES//
 
 public function GetClientes(){
@@ -575,8 +562,8 @@ public function GetFolio($cliente2,$usuario_cliente){
     return $this->lista; 
 }
 
-public function GetNumeroDeParte($folio){
-    $parte=$this->db->query("SELECT id_pieza FROM orden_servicio WHERE folio = '$folio' ");
+public function GetNumeroDeParte($folio,$us_irs){
+    $parte=$this->db->query("SELECT id_pieza FROM orden_servicio WHERE folio = '$folio' AND id_usuario= '$us_irs' ");
     while($filas=$parte->fetch_assoc()){
         $this->lista[]=$filas;
     }
@@ -630,6 +617,117 @@ public function GetColaboradoresByFolio($folio2){
     }
     return $this->lista; 
 }
+
+public function GetTipo($folio){
+    $tipo=$this->db->query("SELECT id_contrato FROM orden_servicio WHERE folio = '$folio' ");
+    while($filas=$tipo->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function GetCaptura($tipo){
+    $captura=$this->db->query("SELECT tipo_captura FROM cat_captura WHERE id_captura = '$tipo' ");
+    while($filas=$captura->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+
+public function Folio($folio){
+    $reg_folio=$this->db->query("SELECT * FROM registro_avance WHERE id = '$folio' ");
+    while($filas=$reg_folio->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function SetData($folio,$cliente,$usuario,$numeros_parte,$actividad,$turno,$operadores,$fecha,$asistencia,$pzok,$pzmal,$pzret,$totalpz){
+    
+    $operador = array($operadores);
+    foreach ($operador as $key => $valor) {
+
+    $set_data=$this->db->query("INSERT INTO registro_avance (id,cliente,usuario_empresa,num_parte,actividad,turno,empleado_irs,fecha,asistencia,pzok,pzmal,pzret,total_pz) 
+    VALUES('$folio','$cliente','$usuario','$numeros_parte','$actividad','$turno','$valor','$fecha','$asistencia','$pzok','$pzmal','$pzret','$totalpz')");
+    
+    }            
+    echo '<script> alert("Registro Insertado");</script>';
+    header("location:../views/registro_avance/reg_avance_1.php");
+    
+}
+
+public function GetPiezasContratadas($folio){
+    $pz_cont=$this->db->query("SELECT total_piezas FROM orden_servicio WHERE folio = '$folio' ");
+    while($filas=$pz_cont->fetch_assoc()){
+        $this->lista[]=$filas;
+    }
+    return $this->lista; 
+}
+
+public function UpdateData($folio,$turno,$operadores,$fecha,$asistencia,$pzok_total,$pzmal_total,$pzret_total,$total){
+    
+    $operador = array($operadores);
+    foreach ($operador as $key => $valor) {
+
+    $set_data=$this->db->query("UPDATE registro_avance SET turno='$turno', empleado_irs='$valor', fecha='$fecha',asistencia='$asistencia',pzok='$pzok_total',pzmal='$pzmal_total',pzret='$pzret_total',total_pz='$total' WHERE id='$folio'");
+    
+    }            
+    echo '<script> alert("Update");
+    window.location.href="../views/registro_avance/reg_avance_1.php";
+    </script>';
+  
+    
+}
+
+public function CorreoCliente($correo,$motivo,$observacion){
+    
+    require '../vendor/autoload.php';
+    require '../vendor/phpmailer/phpmailer/src/Exception.php';
+    require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+    require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+
+    $mail = new PHPMailer(true);
+
+     //Server settings
+     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+     $mail->isSMTP();                                            // Send using SMTP
+     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+     $mail->Username   = 'americocardenasrochaa@gmail.com';                     // SMTP username
+     $mail->Password   = 'mispelotas';                               // SMTP password
+     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+     $mail->Port       = 587;    
+
+    //Recipients
+    $mail->setFrom('americocardenasrochaa@gmail.com', 'Americo');
+    $mail->addAddress($correo, 'Usuario IRS');     // Add a recipient
+    // $mail->addAddress('ellen@example.com');               // Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
+
+    // Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $motivo;
+    $mail->Body    = $observacion;
+    $mail->AltBody = $observacion;
+
+    $mail->send();
+
+    
+    echo'<script> 
+    alert("Email Enviado al Cliente");
+    window.location.href="../views/registro_avance/reg_avance_1.php;
+    </script>';
+}
+    
+
+
 
 //REGISTROS DE AVANCES//
 }
